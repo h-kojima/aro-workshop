@@ -35,12 +35,11 @@ Azure Red Hat OpenShift (ARO) Workshops プロジェクトは、インストラ�
 
 ### コンテンツ
 
-1. [\[デモ\] ROSAクラスターの作成](docs/aro-create)
-1. [\[ハンズオン\] GitHubを利用したROSAクラスターへのアクセス](docs/aro-access)
+1. [\[デモ\] AROクラスターの作成](docs/aro-create)
 1. [\[ハンズオン\] アプリケーションのデプロイのクイックスタート](docs/aro-app-deploy-quickstart)
 1. [\[ハンズオン\] 永続ボリュームとしての Azure Disk の利用設定](docs/aro-volume)
-1. [\[デモとハンズオン\] AWS Controllers for Kubernetes (ACK) による Amazon S3の利用](docs/rosa-ack-s3)
-1. [\[ハンズオン\] コンピュートノードの追加/削除とオートスケールの設定](docs/rosa-nodes)
+1. [\[デモとハンズオン\] Azure Service Operator による Azureリソースの利用](docs/aro-azure-resource)
+1. [\[ハンズオン\] コンピュートノードの追加/削除とオートスケールの設定](docs/aro-nodes)
 1. [\[デモ\] AROクラスターのアップグレード](docs/aro-upgrade)
 1. [\[デモ\] AROクラスターの削除](docs/aro-delete)
 2. [\[ハンズオン\] AROクラスターでのJavaアプリケーション開発 スターターラボ](docs/aro-sample-app-develop)
