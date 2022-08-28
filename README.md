@@ -42,4 +42,4 @@ Azure Red Hat OpenShift (ARO) Workshops プロジェクトは、インストラ�
 1. [\[ハンズオン\] コンピュートノードの追加/削除とオートスケールの設定](docs/aro-nodes)
 1. [\[デモ\] AROクラスターのアップグレード](docs/aro-upgrade)
 1. [\[デモ\] AROクラスターの削除](docs/aro-delete)
-2. [\[ハンズオン\] AROクラスターでのJavaアプリケーション開発 スターターラボ](docs/aro-sample-app-develop)
+2. [\[ハンズオン\] (オプション)AROクラスターでのJavaアプリケーション開発 スターターラボ](docs/aro-sample-app-develop)
