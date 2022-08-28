@@ -62,10 +62,20 @@ workerpool-canary   rendered-workerpool-canary-e3b5c7f3534a74ba469358659178d170 
 <div style="text-align: center;">AROクラスターのアップグレード</div>　　
 
 
-アップグレードを開始すると、次のような画面が表示されます。ここでは、「Partial cluster update」を選択して、1台のコンピュートノードをアップグレード対象外としています。アップグレードしたコンピュートノードでアプリケーションが問題なく実行されることを確認したら、「Resume update」をクリックして、残り1台のコンピュートノードのアップグレードを完了できます。
+アップグレードを開始すると、次のような画面が表示されます。ここでは、「Partial cluster update」を選択して、1台のコンピュートノードをアップグレード対象外としています。
 
-![AROクラスターのアップグレード状況](./images/aro-upgrade-status.png)
-<div style="text-align: center;">AROクラスターのアップグレード状況</div>　　
+![AROクラスターのアップグレード状況](./images/aro-upgrade-status1.png)
+![AROクラスターのアップグレード状況](./images/aro-upgrade-status2.png)
+![AROクラスターのアップグレード状況](./images/aro-upgrade-status3.png)
+<div style="text-align: center;">AROクラスターのアップグレード状況 その1</div>　　
+
+
+アップグレードしたコンピュートノードでアプリケーションが問題なく実行されることを確認したら、「Resume update」をクリックして、残り1台のコンピュートノードのアップグレードを完了できます。
+
+
+![AROクラスターのアップグレード状況](./images/aro-upgrade-status4.png)
+![AROクラスターのアップグレード状況](./images/aro-upgrade-status5.png)
+<div style="text-align: center;">AROクラスターのアップグレード状況 その2</div>　
 
 
 これで、AROクラスターアップグレードのデモ紹介は終了です。次は、インストラクターによる、[AROクラスター削除](../aro-delete)のデモ紹介です。
