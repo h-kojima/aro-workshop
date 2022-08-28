@@ -28,7 +28,7 @@ $ az network vnet delete --resource-group aro-handson-rg01 --name aro-vnet
 また、AROクラスターデプロイ時に利用した、サービスプリンシパル(この例ではaro4)、カスタムロール(この例ではaro-access-role)、ロールの割り当て、リソースグループ(この例では、aro-handson-rg01)について、今後利用する予定がないのであれば、Azure PortalやAzure CLIで削除して、クリーンアップを完了します。
 
 ![AROクラスターデプロイ時に利用していたアクセス制御のリスト](./images/aro-role-assignment.png)
-<div style="text-align: center;">AROクラスターデプロイ時に利用していたアクセス制御のリスト(再利用しないのであれば、これらを削除)</div>　
+<div style="text-align: center;">AROクラスターデプロイ時に利用していたアクセス制御のリスト</div>　
 
 
 これで、AROクラスターの基本的な利用方法を学習する演習とデモ紹介は終了しました。時間に余裕がありましたら、オプションの演習である[AROクラスターでのJavaアプリケーション開発 スターターラボ](../aro-sample-app-develop)に進んでください。
