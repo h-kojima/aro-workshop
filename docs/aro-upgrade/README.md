@@ -48,7 +48,7 @@ worker              rendered-worker-e3b5c7f3534a74ba469358659178d170            
 workerpool-canary   rendered-workerpool-canary-e3b5c7f3534a74ba469358659178d170   True      False      False      1              1                   1                     0                      60s
 ```
 
-ここで作成したMCP、「workerpool-canary」を指定して、コンピュートノードのアップグレード対象外にすることが可能です。
+ここで作成したMCP「workerpool-canary」を指定して、コンピュートノードのアップグレード対象外にすることが可能です。
 
 
 ### AROクラスターのアップグレード
