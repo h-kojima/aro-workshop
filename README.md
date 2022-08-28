@@ -24,7 +24,7 @@ Azure Red Hat OpenShift (ARO) Workshops プロジェクトは、インストラ�
 
 - Azureにアクセス可能なネットワーク環境
 - RHELサーバにSSHログインして、コマンドが実行可能
-   - Azure/OpenShift CLIがインストールされているRHELサーバを利用するために、SSHログインが必要です。
+   - OpenShift CLIがインストールされているRHELサーバを利用するために、SSHログインが必要です。
 - AROクラスターにアクセス可能なWebブラウザ
    - [「Browsers and Client Tools」表](https://access.redhat.com/articles/4763741)にある、最新版のOpenShiftに対応したWebブラウザ(Firefox/MS Edge/Chrome/Safari)のいずれかを利用します。
 
@@ -37,8 +37,8 @@ Azure Red Hat OpenShift (ARO) Workshops プロジェクトは、インストラ�
 
 1. [\[デモ\] AROクラスターの作成](docs/aro-create)
 1. [\[ハンズオン\] アプリケーションのデプロイのクイックスタート](docs/aro-app-deploy-quickstart)
-1. [\[ハンズオン\] 永続ボリュームとしての Azure Disk の利用設定](docs/aro-volume)
-1. [\[デモとハンズオン\] Azure Service Operator による Azureリソースの利用](docs/aro-azure-resource)
+1. [\[デモとハンズオン\] 永続ボリュームとしての Azure Disk/Files の利用設定](docs/aro-volume)
+1. [\[デモ\] Azure Service Operator による Azureリソースの利用](docs/aro-azure-resource)
 1. [\[ハンズオン\] コンピュートノードの追加/削除とオートスケールの設定](docs/aro-nodes)
 1. [\[デモ\] AROクラスターのアップグレード](docs/aro-upgrade)
 1. [\[デモ\] AROクラスターの削除](docs/aro-delete)
