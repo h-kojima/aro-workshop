@@ -10,7 +10,7 @@ Azure PortalかAzure CLIを利用して、AROクラスターをデプロイで�
 ![Azureアプリケーションの登録](./images/azure-service-menu.png)
 ![Azureアプリケーションの登録](./images/app-create1.png)
 ![Azureアプリケーションの登録](./images/app-create2.png)
-<div style="text-align: center;">Azureアプリケーションの登録</div>  
+<div style="text-align: center;">Azureアプリケーションの登録</div>　　
 
 
 次に、Azure上のARO作成場所となる、リソースグループを作成します。Azureサービスから「リソースグループ」を選択して、左上の「+作成」をクリックし、Azureサービスデプロイ時に利用するサブスクリプションを選択、任意のリソースグループ名を入力、リージョンを選択して、「確認および作成」から作成します。これらのパラメータは、利用するAzureアカウントに応じて適宜変更してください。
@@ -18,7 +18,7 @@ Azure PortalかAzure CLIを利用して、AROクラスターをデプロイで�
 
 ![リソースグループの作成](./images/rg-create1.png)
 ![リソースグループの作成](./images/rg-create2.png)
-<div style="text-align: center;">リソースグループの作成</div>  
+<div style="text-align: center;">リソースグループの作成</div>　　  
 
 
 ここで作成したリソースグループに対して、サービスプリンシパルを利用したARO作成/削除権限を追加します。作成したリソースグループを選択して、左サイドメニューの「アクセス制御(IAM)」を選択します。これにより、このリソースグループに対する、現時点でのユーザー/サービスプリンシパルに対するロールの割り当て一覧を確認できます。
@@ -38,7 +38,7 @@ AROを作成/削除するための権限となる、カスタムロールを作�
 ![カスタムロールの作成](./images/custom-role-create5.png)
 ![カスタムロールの作成](./images/custom-role-create6.png)
 ![カスタムロールの作成](./images/custom-role-create7.png)
-<div style="text-align: center;">カスタムロールの作成</div>  
+<div style="text-align: center;">カスタムロールの作成</div>　　  
 
 
 ここで作成したARO作成/削除権限となるカスタムロール(この例では、aro-access-role)と、AROが利用するAzure Virtual Networkの作成/削除権限が含まれるAzureの組み込み(builtin. デフォルトで存在)ロール「ネットワーク共同作成者」を、冒頭で作成したサービスプリンシパルとなるAzureアプリケーションに付与します。
@@ -53,13 +53,13 @@ AROを作成/削除するための権限となる、カスタムロールを作�
 ![ロールの割り当て](./images/aro-role-assignment4.png)
 ![ロールの割り当て](./images/aro-role-assignment5.png)
 ![ロールの割り当て](./images/aro-role-assignment6.png)
-<div style="text-align: center;">AROに関するカスタムロールの割り当て</div>  
+<div style="text-align: center;">AROに関するカスタムロールの割り当て</div>　　  
 
 
 上記と同様の手順で、今度は組み込みロールの1つである「ネットワーク共同作成者」を割り当てます。「ロールの割り当ての追加」から、種類「BuiltinRole」の一覧にあるロールのうち、「ネットワーク共同作成者」を選択して、サービスプリンシパル(aro4)に割り当てます。すると、次のようなロールの割り当て画面になります。
 
 ![ロールの割り当て](./images/aro-role-assignment7.png)
-<div style="text-align: center;">AROとVirtual Networkに関する管理権限の割り当て</div>  
+<div style="text-align: center;">AROとVirtual Networkに関する管理権限の割り当て</div>　　  
 
 
 ### AROクラスターの作成
@@ -70,7 +70,7 @@ AROを作成/削除するための権限となる、カスタムロールを作�
 ![AROクラスター作成 その1](./images/aro-create1.png)
 ![AROクラスター作成 その1](./images/aro-create2.png)
 ![AROクラスター作成 その1](./images/aro-create3.png)
-<div style="text-align: center;">AROクラスター作成 その1</div>  
+<div style="text-align: center;">AROクラスター作成 その1</div>　　  
 
 
 「次: Authentication >」をクリックして、冒頭で作成したサービスプリンシパル(aro4)のクライアントIDとシークレットを入力します。続いて「Red Hat pull secret」に[Red Hat Hybrid Cloud Console](https://console.redhat.com/openshift/install/azure/aro-provisioned)から入手したプルシークレットの値(「Copy pull secret」でコピーが可能)を入力します。このプルシークレットにより、ARO上でレッドハットが提供するOperatorなどのコンテンツを利用できるようになります。「次: Networking >」をクリックして、AROが利用するVirtual Networkの作成画面に移動します。ここでは全てデフォルトの値のまま、「次: Tags >」をクリックして、タグの値は何も入力せずに「確認および作成」から、指定したAROクラスターの構成情報を確認して、「作成」をクリックすることでAROクラスターのデプロイが開始されます。
@@ -79,7 +79,7 @@ AROを作成/削除するための権限となる、カスタムロールを作�
 ![AROクラスター作成 その2](./images/aro-create4.png)
 ![AROクラスター作成 その2](./images/aro-create5.png)
 ![AROクラスター作成 その2](./images/aro-create6.png)
-<div style="text-align: center;">AROクラスター作成 その2</div>  
+<div style="text-align: center;">AROクラスター作成 その2</div>　　
 
 
 Azure Portal上でAROクラスターのデプロイ状況を確認できます。デフォルトの構成だと、およそ40分ほどでAROクラスターのデプロイが完了します。
@@ -87,13 +87,13 @@ Azure Portal上でAROクラスターのデプロイ状況を確認できます�
 ![AROクラスターのデプロイ状況](./images/aro-deploy1.png)
 ![AROクラスターのデプロイ状況](./images/aro-deploy2.png)
 ![AROクラスターのデプロイ状況](./images/aro-deploy3.png)
-<div style="text-align: center;">AROクラスターのデプロイ状況</div>  
+<div style="text-align: center;">AROクラスターのデプロイ状況</div>　　
 
 作成したAROクラスターについては、リソースグループの「概要」メニューから確認できます。作成したAROクラスター名(この例では、testmyaro01)を選択すると、OpenShiftのコンソール/API ServerのURLが確認できます。
 
 ![AROクラスターのリソース確認](./images/aro-resource1.png)
 ![AROクラスターのリソース確認](./images/aro-resource2.png)
-<div style="text-align: center;">AROクラスターのリソース確認</div>  
+<div style="text-align: center;">AROクラスターのリソース確認</div>　　
 
 
 OpenShiftコンソールURLにアクセスすると、ログイン画面が表示されます。次のコマンドで確認した、AROクラスターの管理者アカウントでログインできます。azコマンドで指定する「--name」と「--resource-group」オプションは、作成したAROクラスターの名前とリソースグループの名前を指定します。この例では、「testmyaro01」と「aro-handson-rg01」です。
