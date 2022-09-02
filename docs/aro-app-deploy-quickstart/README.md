@@ -39,6 +39,6 @@ Node.jsとPostgreSQLアプリの作成が完了すると、「トポロジー」
 ![Pod数の設定](./images/pod-num.png)
 <div style="text-align: center;">Pod数の設定</div>
 
-これでROSAクラスターでの、サンプルアプリケーションのデプロイが完了しました。次の演習の[永続ボリュームとしての Azure Disk/Files の利用設定](../aro-volume)に進んでください。
+これでAROクラスターでの、サンプルアプリケーションのデプロイが完了しました。次の演習の[永続ボリュームとしての Azure Disk/Files の利用設定](../aro-volume)に進んでください。
 
 [HOME](../../README.md)
