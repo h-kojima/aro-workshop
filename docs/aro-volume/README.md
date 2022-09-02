@@ -176,7 +176,7 @@ $ oc create -f azure-storageclass-azure-file.yaml
 ![PVCの作成](./images/pvc-create4.png)
 <div style="text-align: center;">PVC　(test-pvc-azure-files20) の作成</div>
 
-ここでストレージクラスとして「azure-files」を選択すると、アクセスモードとして「共有アクセス(RWX)」が選択できるようになっていることを確認できます。Azure Diskの場合は、RWO(1台のコンピュートノードからのみ利用可能)でしたが、Azure Filesの場合は、RWX(複数台のコンピュートノードから利用可能)となります。RWXのアクセスモードに対応したPVCを利用することで、複数ノード上でレプリケーション構成を取るアプリケーション(Azure Filesに保存したデータを共有)をARO上で実行できるようになります。
+ここでストレージクラスとして「azure-files」を選択すると、アクセスモードとして「共有アクセス(RWX)」が選択できるようになっていることを確認できます。Azure Diskの場合は、RWO(1台のコンピュートノードからのみ利用可能)だけを選択できましたが、Azure Filesの場合は、RWOに加えてRWX(複数台のコンピュートノードから利用可能)も選択できます。RWXのアクセスモードに対応したPVCを利用することで、複数ノード上でレプリケーション構成を取るアプリケーション(Azure Filesに保存したデータを共有)をARO上で実行できるようになります。
 
 Azure Diskの時と同様に、次のYAMLファイルを利用して、作成した「test-pvc-azure-files20」PVCを利用したPodを実行します。
 ```
@@ -204,7 +204,7 @@ Podのターミナルからマウント状況を確認すると、CIFSプロト�
 ![Podの情報確認](./images/pod-terminal2.png)
 <div style="text-align: center;">Podの情報確認</div>　
 
-また、Azure Portalにアクセスできる場合は、Azure Filesの作成に利用しているストレージアカウントを選択して、左サイドメニューから「ファイル共有」から、現在のAzure Filesの利用状況を確認できます。この演習では、受講者はAzure Portalのストレージアカウントにアクセスできる権限を持たないことを想定しますので、下記画像のようなイメージであるとだけご認識ください。
+また、Azure Portalにアクセスできる場合は、Azure Filesの作成に利用しているストレージアカウントを選択して、左サイドメニューから「ファイル共有」から、現在のAzure Filesの利用状況を確認できます。この演習では、受講者はAzure Portalのストレージアカウントにアクセスできる権限を持たないことを想定しますので、実際にアクセスして確認することはできません。
 
 ![ファイル共有利用状況の確認](./images/azure-portal-files.png)
 <div style="text-align: center;">Azure Portalでのファイル共有利用状況の確認</div>　
