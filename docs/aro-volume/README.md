@@ -2,7 +2,7 @@
 
 ### Azure Diskの利用
 
-AROには、Azure Diskを使用するストレージクラスが事前に設定されています。これにより、[Azure DiskのPremium SSD　LRS(Locally Redundant Storage. ローカル冗長ストレージ)オプション](https://azure.microsoft.com/ja-jp/pricing/details/managed-disks/)がすぐに使えるように設定されています。
+AROには、Azure Diskを使用するストレージクラスが事前に設定されています。これにより、[Azure DiskのPremium SSD LRS(Locally Redundant Storage. ローカル冗長ストレージ)オプション](https://azure.microsoft.com/ja-jp/pricing/details/managed-disks/)がすぐに使えるように設定されています。
 
 ![AROですぐに利用可能なストレージクラス](./images/storage-class.png)
 <div style="text-align: center;">AROですぐに利用可能なストレージクラス</div>　　
