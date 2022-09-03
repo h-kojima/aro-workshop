@@ -81,7 +81,7 @@ workerpool-canary   rendered-workerpool-canary-e3b5c7f3534a74ba469358659178d170 
 これで、AROクラスターアップグレードのデモ紹介は終了です。次は、インストラクターによる、[AROクラスター削除](../aro-delete)のデモ紹介です。
 
 
-### \[参考情報\]
+#### \[参考情報\]
 
 - [第7章 カナリアロールアウト更新の実行](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.10/html/updating_clusters/update-using-custom-machine-config-pools)
 

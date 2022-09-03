@@ -213,7 +213,7 @@ Podのターミナルからマウント状況を確認すると、CIFSプロト�
 これでAROクラスターでの、永続ボリュームとしてのAzure Disk/Filesを利用する設定と確認が完了しました。次の演習の[Azure Service Operator による Azure リソースの利用](../aro-azure-resource)に進んでください。
 
 
-### \[参考情報\]
+#### \[参考情報\]
 
 - [Azure Red Hat OpenShift 4 で Azure Files StorageClass を作成する](https://docs.microsoft.com/ja-jp/azure/openshift/howto-create-a-storageclass)
 

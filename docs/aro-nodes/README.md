@@ -208,7 +208,7 @@ Machineset Autoscalerを設定したマシンセットによって、自動的�
 
 デモ紹介を待っている間、時間に余裕があれば、オプション演習の[AROクラスターでのJavaアプリケーション開発 スターターラボ](../aro-sample-app-develop)に進んでください。
 
-### \[参考情報\]
+#### \[参考情報\]
 
 - [Azure Red Hat OpenShift (ARO) でスケーラブルなノード管理・運用](https://qiita.com/hatasaki/items/d1b6b64dd5a270d07f54)
 
