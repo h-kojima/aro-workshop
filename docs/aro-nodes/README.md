@@ -148,7 +148,7 @@ Cluster Autoscalerは、Adminisratorパースペクティブの「クラスタ�
 ![Cluster Autoscalerの設定](./images/cluster-autoscaler-create1.png)
 ![Cluster Autoscalerの設定](./images/cluster-autoscaler-create2.png)
 ![Cluster Autoscalerの設定](./images/cluster-autoscaler-create3.png)
-<div style="text-align: center;">Cluster Autoscalerの設定</div>　
+<div style="text-align: center;">Cluster Autoscalerの設定(※今回の演習では、インストラクターによって設定済み)</div>　
 
 
 続いて、Machine Autoscalerの設定です。これは前述した手順で受講者が作成したマシンセットの右側にある「・」が縦に3つ並んだアイコンをクリックして、「Machine Autoscalerの作成」をクリックし、最小数と最大数を設定して「作成」ボタンをクリックするだけで設定できます。今回の演習では、最小数を「1」、最大数を「2」と設定してください。
