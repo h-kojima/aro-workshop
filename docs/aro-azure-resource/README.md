@@ -2,7 +2,7 @@
 
 ### [デモ]Azure Service Operatorの利用準備
 
-※ここで紹介している内容は、インストラクターによって紹介されるデモ手順であり、受講者はコマンド操作を実施する必要はありません。次の「[ハンズオン]Azure Service Operatorを利用したAzure Virtual Networkの作成」まで読み進めて下さい。
+※ここで紹介している内容は、インストラクターによって紹介されるデモ手順であり、受講者はコマンド/GUI操作を実施する必要はありません。次の「[ハンズオン]Azure Service Operatorを利用したAzure Virtual Networkの作成」まで読み進めて下さい。
 
 AROに含まれるRed Hat OpenShiftのOperatorHubでは、Kubernetes/OpenShiftからAzureのリソースを簡単に利用できるようになっている[Azure Service Operator](https://github.com/Azure/azure-service-operator)というOperatorを用意しています。この演習では、Azure Service Operatorを利用して、Azureのリソースの1つである[Azure Virtual Network](https://azure.microsoft.com/ja-jp/pricing/details/virtual-network/)を利用するための設定を行います。
 
