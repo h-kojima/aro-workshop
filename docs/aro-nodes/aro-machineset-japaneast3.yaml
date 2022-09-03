@@ -1,0 +1,58 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  name: myopenaro01-9kvns-hkojima-worker-japaneast3
+  labels:
+    machine.openshift.io/cluster-api-cluster: myopenaro01-9kvns
+    machine.openshift.io/cluster-api-machine-role: worker
+    machine.openshift.io/cluster-api-machine-type: worker
+  namespace: openshift-machine-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: myopenaro01-9kvns
+      machine.openshift.io/cluster-api-machineset: myopenaro01-9kvns-hkojima-worker-japaneast3
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: myopenaro01-9kvns
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: myopenaro01-9kvns-hkojima-worker-japaneast3
+    spec:
+      metadata:
+        labels:
+          type: hkojima-worker-nodes
+      providerSpec:
+        value:
+          location: japaneast
+          networkResourceGroup: openenv-hkctf
+          publicLoadBalancer: myopenaro01-9kvns
+          resourceGroup: aro-myopendomain01
+          vnet: myopenaro-vnet01
+          vmSize: Standard_F4s_v2
+          zone: "3"
+          image:
+            offer: aro4
+            publisher: azureopenshift
+            resourceID: ""
+            sku: aro_410
+            version: 410.84.20220125
+          apiVersion: machine.openshift.io/v1beta1
+          credentialsSecret:
+            name: azure-cloud-credentials
+            namespace: openshift-machine-api
+          kind: AzureMachineProviderSpec
+          metadata:
+            creationTimestamp: null
+          userDataSecret:
+            name: worker-user-data
+          osDisk:
+            diskSettings: {}
+            diskSizeGB: 128
+            managedDisk:
+              storageAccountType: Premium_LRS
+            osType: Linux
+          publicIP: false
+          subnet: worker
