@@ -123,7 +123,7 @@ $ az aro list-credentials --name testmyaro01 --resource-group aro-handson-rg01
 なお、AROクラスターの作成完了を待っている間、予め作成済みである別のAROクラスターを利用して、受講者は演習を進めます。[アプリケーションのデプロイのクイックスタート](../aro-app-deploy-quickstart)に進んでください。
 
 
-#### \[参考情報\]
+### \[参考情報\]
 
 - [Azure portal を使用した Azure Red Hat OpenShift クラスターのデプロイ](https://docs.microsoft.com/ja-jp/azure/openshift/quickstart-portal)
 - [Azure Red Hat OpenShiftクラスターを作成(Azure CLIを利用)してWebコンソールからアプリをデプロイ](https://qiita.com/hatasaki/items/8a8526a3dd753e22b503)
