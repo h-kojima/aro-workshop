@@ -210,6 +210,13 @@ Machineset Autoscalerを設定したマシンセットによって、自動的�
 <div style="text-align: center;">ジョブの削除</div>　
 
 
+最後に、受講者が作成したマシンセットを削除します。当該マシンセットの右横にある「・」が縦に3つ並んだアイコンをクリックして、「マシンセットの削除」から「削除」を選択することで、マシンセット及びそれに紐づく全てのコンピュートノードが削除されます。
+
+![マシンセットの削除](./images/machineset-delete1.png)
+![マシンセットの削除](./images/machineset-delete2.png)
+<div style="text-align: center;">マシンセットの削除</div>　
+
+
 これでAROの基本的な演習は終了です。この後は、インストラクターによる、[AROクラスターのアップグレード](../aro-upgrade)と[AROクラスターの削除](../aro-delete)のデモ紹介があります。
 
 デモ紹介を待っている間、時間に余裕があれば、オプション演習の[AROクラスターでのJavaアプリケーション開発 スターターラボ](../aro-sample-app-develop)に進んでください。
