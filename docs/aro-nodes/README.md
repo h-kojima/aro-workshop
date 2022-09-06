@@ -90,7 +90,7 @@ spec:
 
 - マシンセット名: 任意に指定可能なマシンセット名。下記画像の例では、「myopenaro01-9kvns-hkojima-worker-japaneast3」を指定
 - AROクラスター名: マシンセットで参照されるAROクラスターの名前。下記画像の例では、「myopenaro01-9kvns」を指定
-- key, value: マシンセットに付けられる任意のラベル名。下記画像の例では、「key」に「type」を、「value」に「hkojima-worker-nodes」を指定 (このラベルは後に使いますので、他の受講者と被らないようなラベルを付けて下さい)
+- key, value: マシンセットで指定する任意のラベル名。下記画像の例では、「key」に「type」を、「value」に「hkojima-worker-nodes」を指定 (このラベルは後に使いますので、他の受講者と被らないようなラベルを付けて下さい)
 - ネットワークリソースグループ名: AROが利用するVirtual Networkリソースがあるリソースグループ名。下記画像の例では、「openenv-hkctf」を指定
 - AROクラスターのドメイン名: マシンセットで参照されるAROクラスターのドメイン名。下記画像の例では、「aro-myopendomain01」を指定
 - Virutal Network名: AROクラスターが利用するVirtual Network名。下記画像の例では、「myopenaro-vnet01」を指定
@@ -104,7 +104,7 @@ spec:
 ![マシンセットの作成](./images/machineset-create4.png)
 <div style="text-align: center;">マシンセットの作成</div>　
 
-マシンセットの作成に伴い、対応したコンピュートノードに指定したラベル(この例では、「type=hkojima-worker-nodes」)が自動的に付与されます。このラベルを利用して、Podを特定のラベルが付いたコンピュートノードで実行できるようになります。
+マシンセットの作成に伴い、対応したコンピュートノードに、前述したマシンセット作成時に指定したラベル(この例では、「type=hkojima-worker-nodes」)が自動的に付与されます。このラベルを利用して、Podを特定のラベルが付いたコンピュートノードで実行できるようになります。なお、マシンセットやマシン(各ノードに対応した情報(インスタンスタイプなど)が記述されるOpenShiftのリソース. マシンのグループがマシンセット)自体には、ラベルは付与されません。
 
 ![コンピュートノードのラベル確認](./images/node-labels.png)
 <div style="text-align: center;">コンピュートノードのラベル確認</div>　
