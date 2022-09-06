@@ -54,11 +54,12 @@ spec:
           <key>: <value>
       providerSpec:
         value:
-          location: japaneast
+          location: <リージョン名>
           networkResourceGroup: <ネットワークリソースグループ名>
           publicLoadBalancer: <AROクラスター名>
-          resourceGroup: <AROクラスターのドメイン名>
+          resourceGroup: aro-<AROクラスターのインフラID>
           vnet: <Virutal Network名>
+          subnet: <サブネット名>
           vmSize: Standard_F4s_v2
           zone: "3"
           image:
@@ -83,7 +84,6 @@ spec:
               storageAccountType: Premium_LRS
             osType: Linux
           publicIP: false
-          subnet: worker
 ```
 
 こうしたマシンセットを新規作成する場合は、既存のマシンセットをコピーして値を変更すると便利です。「<>」で囲んだところは、AROクラスターの環境に応じて適宜変更します。具体的な変更内容については、当日インストラクターから案内されますが、それぞれの変数と説明は次のとおりです。
@@ -91,9 +91,12 @@ spec:
 - マシンセット名: 任意に指定可能なマシンセット名。下記画像の例では、「myopenaro01-9kvns-hkojima-worker-japaneast3」を指定
 - AROクラスター名: マシンセットで参照されるAROクラスターの名前。下記画像の例では、「myopenaro01-9kvns」を指定
 - key, value: マシンセットで指定する任意のラベル名。下記画像の例では、「key」に「type」を、「value」に「hkojima-worker-nodes」を指定 (このラベルは後に使いますので、他の受講者と被らないようなラベルを付けて下さい)
+- リージョン名: AROクラスターが作成されたリージョン名。下記画像の例では、「japaneast」を指定
 - ネットワークリソースグループ名: AROが利用するVirtual Networkリソースがあるリソースグループ名。下記画像の例では、「openenv-hkctf」を指定
-- AROクラスターのドメイン名: マシンセットで参照されるAROクラスターのドメイン名。下記画像の例では、「aro-myopendomain01」を指定
+- AROクラスターのインフラID: AROクラスターに付けられたID。下記画像の例では、「myopendomain01」を指定
 - Virutal Network名: AROクラスターが利用するVirtual Network名。下記画像の例では、「myopenaro-vnet01」を指定
+- サブネット名: コンピュートノードが利用するサブネット名。下記画像の例では、「worker」を指定
+
 
 これらの変数を設定した、[マシンセットのサンプルファイル](./aro-machineset-japaneast3.yaml)がありますので参考にしてください。なお、「vmSize: Standard_F4s_v2」で[AROで利用可能な最小サイズのコンピュートノード](https://docs.microsoft.com/ja-jp/azure/openshift/support-policies-v4#supported-virtual-machine-sizes)を指定し、「zone: "3"」で3番目のアベイラビリティーゾーンを指定しています。
 

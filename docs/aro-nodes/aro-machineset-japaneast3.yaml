@@ -31,6 +31,7 @@ spec:
           publicLoadBalancer: myopenaro01-9kvns
           resourceGroup: aro-myopendomain01
           vnet: myopenaro-vnet01
+          subnet: worker
           vmSize: Standard_F4s_v2
           zone: "3"
           image:
@@ -55,4 +56,3 @@ spec:
               storageAccountType: Premium_LRS
             osType: Linux
           publicIP: false
-          subnet: worker
