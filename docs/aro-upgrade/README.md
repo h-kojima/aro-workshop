@@ -15,13 +15,19 @@ kubeadminユーザーとして、AROクラスターにログインして、「�
 $ : ↓AROクラスターにkubeadminユーザでログイン
 $ oc login --token=sha256~XXXXX --server=https://api.testmydomain01.japaneast.aroapp.io:6443
 
+
+$ : ↓AROクラスターのコンピュートノードのリスト表示
 $ oc get -l 'node-role.kubernetes.io/master!=' -o 'jsonpath={range .items[*]}{.metadata.name}{"\n"}{end}' nodes
 testmyaro01-jnlll-worker-japaneast1-t676g
 testmyaro01-jnlll-worker-japaneast2-8nbm2
 testmyaro01-jnlll-worker-japaneast3-6tqgr
+$ : ↓「oc label」コマンドによる「node-role.kubernetes.io/workerpool-canary=」ラベルを付与
 $ oc label node testmyaro01-jnlll-worker-japaneast3-6tqgr node-role.kubernetes.io/workerpool-canary=
 node/testmyaro01-jnlll-worker-japaneast3-6tqgr labeled
 
+
+$ : ↓「node-role.kubernetes.io/workerpool-canary=」ラベルが付与されたノードを対象とする
+$ :   OpenShiftのMachineConfigPoolリソースを作成
 $ cat << EOF > worker-canary.yaml
 kind: MachineConfigPool
 metadata:
@@ -41,6 +47,8 @@ EOF
 $ oc create -f worker-canary.yaml
 machineconfigpool.machineconfiguration.openshift.io/workerpool-canary created
 
+
+$ : ↓OpenShiftのMachineConfigPoolリソース一覧を表示
 $ oc get mcp
 NAME                CONFIG                                                        UPDATED   UPDATING   DEGRADED   MACHINECOUNT   READYMACHINECOUNT   UPDATEDMACHINECOUNT   DEGRADEDMACHINECOUNT   AGE
 master              rendered-master-b3a0f025835fde2aeb292b6344891769              True      False      False      3              3                   3                     0                      5h8m
