@@ -21,7 +21,7 @@ $ oc get -l 'node-role.kubernetes.io/master!=' -o 'jsonpath={range .items[*]}{.m
 testmyaro01-jnlll-worker-japaneast1-t676g
 testmyaro01-jnlll-worker-japaneast2-8nbm2
 testmyaro01-jnlll-worker-japaneast3-6tqgr
-$ : ↓「oc label」コマンドによる「node-role.kubernetes.io/workerpool-canary=」ラベルを付与
+$ : ↓「oc label」コマンドによる「node-role.kubernetes.io/workerpool-canary=」ラベルの付与
 $ oc label node testmyaro01-jnlll-worker-japaneast3-6tqgr node-role.kubernetes.io/workerpool-canary=
 node/testmyaro01-jnlll-worker-japaneast3-6tqgr labeled
 
