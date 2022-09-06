@@ -111,10 +111,10 @@ $ az storage account create -n arofilesXXXXXsa -g openenv-XXXXX --sku Standard_L
 <div style="text-align: center;">Azure ストレージアカウントの表示</div>　　
 
 
-最初にご紹介した「AROクラスターの作成」手順で利用したAROのサービスプリンシパルに対して、作成したストレージアカウントのリソースグループに対するアクセス許可が必要となるので、これを「az role assignment」コマンドで設定します。ここでは、「Contributor(共同作成者)」の権限を割り当てて、全てのリソースを管理するためのフルアクセス権限を付与しています。
+最初にご紹介した「AROクラスターの作成」手順で利用したAROのサービスプリンシパルに対して、作成したストレージアカウントのリソースグループに対するアクセス許可が必要となるので、これを「az role assignment」コマンドで設定します。ここでは、「Storage Account Contributor」の権限を割り当てて、ストレージに関する管理権限を割り当てています。
 
 ```
-$ az role assignment create --role Contributor --scope /subscriptions/<AzureのサブスクリプションID>/resourceGroups/<Azureストレージアカウントを作成したリソースグループの名前> --assignee <AROサービスプリンシパルのアプリケーションID>
+$ az role assignment create --role "storage account contributor" --scope /subscriptions/<AzureのサブスクリプションID>/resourceGroups/<Azureストレージアカウントを作成したリソースグループの名前> --assignee <AROサービスプリンシパルのアプリケーションID>
 ```
 
 ロールの割り当て結果は、Azure Portalで次のように表示されます。ここでは、「openenv-aro-XXXXX」というAROのサービスプリンシパルに対して、「openenv-XXXXX」リソースグループに対する権限が設定されています。
