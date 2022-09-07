@@ -206,7 +206,7 @@ Podのターミナルからマウント状況を確認すると、CIFSプロト�
 ![Podの情報確認](./images/pod-terminal2.png)
 <div style="text-align: center;">Podの情報確認</div>　
 
-また、Azure Portalにアクセスできる場合は、Azure Filesの作成に利用しているストレージアカウントを選択して、左サイドメニューから「ファイル共有」から、現在のAzure Filesの利用状況を確認できます。この演習では、受講者はAzure Portalのストレージアカウントにアクセスできる権限を持たないことを想定しますので、実際にアクセスして確認することはできません。
+また、Azure Portalにアクセスできる場合は、Azure Filesの作成に利用しているストレージアカウントを選択して、左サイドメニューから「ファイル共有」から、現在のAzure Filesの利用状況を確認できます。この演習では、受講者はAzure Portalへのアクセス権限を持たないことを想定しますので、実際にアクセスして確認することはできません。
 
 ![ファイル共有利用状況の確認](./images/azure-portal-files.png)
 <div style="text-align: center;">Azure Portalでのファイル共有利用状況の確認</div>　
