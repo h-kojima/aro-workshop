@@ -117,10 +117,10 @@ $ az storage account create -n arofilesXXXXXsa -g openenv-XXXXX --sku Standard_L
 $ az role assignment create --role "storage account contributor" --scope /subscriptions/<AzureのサブスクリプションID>/resourceGroups/<Azureストレージアカウントを作成したリソースグループの名前> --assignee <AROサービスプリンシパルのアプリケーションID>
 ```
 
-ロールの割り当て結果は、Azure Portalで次のように表示されます。ここでは、「openenv-aro-XXXXX」というAROのサービスプリンシパルに対して、「openenv-XXXXX」リソースグループに対する権限が設定されています。
+ロールの割り当て結果は、Azure Portalで次のように表示されます。ここでは、「openenv-aro-XXXXX」というAROのサービスプリンシパルに対して、「openenv-XXXXX」リソースグループに対する権限(AROを作るためのカスタム権限/Virtual Network管理権限/ストレージアカウントの管理権限の3つ)が設定されています。
 
 ![リソースグループに対するアクセス制御](./images/azure-role-assignment.png)
-<div style="text-align: center;">ストレージアカウントのリソースグループに対するアクセス制御</div>　　
+<div style="text-align: center;">AROクラスターのリソースグループに対するアクセス制御</div>　　
 
 
 続いて、AROクラスター側でアクセス許可を設定します。OpenShiftの[サービスアカウント](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/authentication_and_authorization/understanding-and-creating-service-accounts)の設定を編集します。サービスアカウントは、OpenShiftの各プロジェクトに存在するオブジェクトであり、ユーザーの認証情報を共有せずに各コンポーネントがAPIアクセスを制御するための方法を提供します。ここでは、Azure Filesのプロビジョニングの際に、Azureストレージアカウントとキーを保存するOpenShiftシークレットを作成・取得するための権限が「persistent-volume-binder」サービスアカウントに必要となるため、「oc adm policy add-cluster-role-to-user」コマンドで割り当てています。
