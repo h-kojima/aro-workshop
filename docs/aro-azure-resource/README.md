@@ -104,7 +104,7 @@ Administratorパースペクティブの「インストール済みのOperator�
 ![Virtual Networkの作成](./images/network-create5.png)
 <div style="text-align: center;">Azure Virtual Networkのリソース作成 その2</div>　
 
-作成したVirtual Networkのリソースは、Azure Portalで確認することもできます。この演習では、受講者はAzure Portalのストレージアカウントにアクセスできる権限を持たないことを想定しますので、実際にアクセスして確認することはできません。
+作成したVirtual Networkのリソースは、Azure Portalで確認することもできます。この演習では、受講者はAzure Portalへのアクセス権限を持たないことを想定しますので、実際にアクセスして確認することはできません。
 
 ![Azure Portalの画面](./images/azure-portal.png)
 <div style="text-align: center;">Azure PortalでのVirtual Networkリソースの確認</div>　
