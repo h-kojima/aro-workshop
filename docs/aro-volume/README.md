@@ -78,7 +78,9 @@ AROクラスターの複数のコンピュートノードから同時に読み�
 
 ```
 $ :↓ 「East US」リージョンに、「openenv-XXXXX」という名前のリソースグループを作成
+$ :   (ストレージアカウントとAROクラスターを作成するリソースグループが同じ場合は不要)
 $ az group create -l eastus -n openenv-XXXXX
+
 
 $ :↓ 「openenv-XXXXX」リソースグループに「arofilesXXXXXsa」という名前のストレージアカウントを作成
 $ az storage account create -n arofilesXXXXXsa -g openenv-XXXXX --sku Standard_LRS
