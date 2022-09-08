@@ -1,0 +1,7 @@
+The talk scripts of this page are as follows:
+
+ここまでご紹介してきた特徴をもつ、AROのリファレンスアーキテクチャです。
+
+この情報はMicrosoftによって提供されており、
+
+引用元にあるリンクをクリックすることで、詳細を確認できます。

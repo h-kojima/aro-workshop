@@ -1,0 +1,6 @@
+The talk scripts of this page are as follows:
+
+本資料では、これからコンテナやOpenShiftの導入をご検討されている方向けに、
+マイクロソフトが提供するクラウドサービスの1つである、
+
+Azure Red Hat OpenShift、通称AROの概要をご紹介します。
