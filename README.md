@@ -26,7 +26,7 @@ Azure Red Hat OpenShift (ARO) Workshops プロジェクトは、インストラ�
 - AROクラスターにアクセス可能なWebブラウザ
    - [「Browsers and Client Tools」表](https://access.redhat.com/articles/4763741)にある、最新版のOpenShiftに対応したWebブラウザ(Firefox/MS Edge/Chrome/Safari)のいずれかを利用します。
 
-オプションの演習を進める際に必要な要件(オプションの演習をしない場合は不要)
+[オプションの演習](docs/aro-sample-app-develop)を進める際に必要な要件(オプションの演習をしない場合は不要)
 - RHELサーバにSSHログインして、コマンドが実行可能
    - OpenShift CLI(ocコマンド)がインストールされているRHELサーバを利用するために、SSHログインが必要です。
 - GitHubにアクセス可能なネットワーク環境とGitHubの個人アカウント
