@@ -35,7 +35,7 @@ Azure Red Hat OpenShift (ARO) Workshops プロジェクトは、インストラ�
 
 - 有償サービスを利用可能なAzureアカウント
 - 無料で作成可能な[Red Hatアカウント](https://cloud.redhat.com/) (「Create an account」から作成)
-- [Azure CLI(azコマンド)](https://docs.microsoft.com/ja-jp/cli/azure/install-azure-cli)/[OpenShift CLI(ocコマンド)](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/cli_tools/_openshift-cli-oc)が実行できるTerminal
+- [Azure CLI(azコマンド)](https://docs.microsoft.com/ja-jp/cli/azure/install-azure-cli) / [OpenShift CLI(ocコマンド)](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/cli_tools/_openshift-cli-oc) が実行できるTerminal
 
 ### コンテンツ
 
