@@ -74,15 +74,15 @@ test-azure-diskという名前でPodが作成されて、Podにより「test-pvc
 
 AROクラスターの複数のコンピュートノードから同時に読み書き可能な永続ボリュームとして、[Azure Files](https://azure.microsoft.com/ja-jp/pricing/details/storage/files/)を利用するように設定できます。このために、Azure Filesを利用するためのストレージクラスを、AROの管理ユーザーで作成する必要があります。
 
-利用準備として、最初にAzureのストレージアカウントを作成します。指定したリソースグループの中に作成したストレージアカウントを利用して、Azure Filesが作成・利用されることになります。ストレージアカウント作成には、Azure CLI(azコマンド)による「az storage account create」コマンドを実行します。
+利用準備として、最初にAzureのストレージ アカウントを作成します。指定したリソースグループの中に作成したストレージ アカウントを利用して、Azure Filesが作成・利用されることになります。ストレージ アカウント作成には、Azure CLI(azコマンド)による「az storage account create」コマンドを実行します。
 
 ```
 $ :↓ 「East US」リージョンに、「openenv-XXXXX」という名前のリソースグループを作成
-$ :   (ストレージアカウントとAROクラスターを作成するリソースグループが同じ場合は不要)
+$ :   (ストレージ アカウントとAROクラスターを作成するリソースグループが同じ場合は不要)
 $ az group create -l eastus -n openenv-XXXXX
 
 
-$ :↓ 「openenv-XXXXX」リソースグループに「arofilesXXXXXsa」という名前のストレージアカウントを作成
+$ :↓ 「openenv-XXXXX」リソースグループに「arofilesXXXXXsa」という名前のストレージ アカウントを作成
 $ az storage account create -n arofilesXXXXXsa -g openenv-XXXXX --sku Standard_LRS
 {
   "accessTier": "Hot",
@@ -107,25 +107,25 @@ $ az storage account create -n arofilesXXXXXsa -g openenv-XXXXX --sku Standard_L
 }
 ```
 
-作成したストレージアカウントは、Azure Portalで次のように表示されます。ここではAROクラスターを作成しているリソースグループに、ストレージアカウントを作成しています。
+作成したストレージ アカウントは、Azure Portalで次のように表示されます。ここではAROクラスターを作成しているリソースグループに、ストレージ アカウントを作成しています。
 
-![Azureストレージアカウントの表示](./images/azure-storage-account.png)
-<div style="text-align: center;">Azure ストレージアカウントの表示</div>　　
+![Azureストレージ アカウントの表示](./images/azure-storage-account.png)
+<div style="text-align: center;">Azure ストレージ アカウントの表示</div>　　
 
 
-最初にご紹介した「AROクラスターの作成」手順で利用したAROのサービスプリンシパルに対して、作成したストレージアカウントのリソースグループに対するアクセス許可が必要となるので、これを「az role assignment」コマンドで設定します。ここでは、「Storage Account Contributor(ストレージアカウント共同作成者)」というAzure標準の組み込みロールを指定して、ストレージに関する管理権限を割り当てています。
+最初にご紹介した「AROクラスターの作成」手順で利用したAROのサービスプリンシパルに対して、作成したストレージ アカウントのリソースグループに対するアクセス許可が必要となるので、これを「az role assignment」コマンドで設定します。ここでは、「Storage Account Contributor(ストレージ アカウント共同作成者)」というAzure標準の組み込みロールを指定して、ストレージに関する管理権限を割り当てています。
 
 ```
-$ az role assignment create --role "storage account contributor" --scope /subscriptions/<AzureのサブスクリプションID>/resourceGroups/<Azureストレージアカウントを作成したリソースグループの名前> --assignee <AROサービスプリンシパルのアプリケーションID>
+$ az role assignment create --role "storage account contributor" --scope /subscriptions/<AzureのサブスクリプションID>/resourceGroups/<Azureストレージ アカウントを作成したリソースグループの名前> --assignee <AROサービスプリンシパルのアプリケーションID>
 ```
 
-ロールの割り当て結果は、Azure Portalで次のように表示されます。ここでは、「openenv-aro-XXXXX」というAROのサービスプリンシパルに対して、「openenv-XXXXX」リソースグループに対する権限(AROを作るためのカスタム権限/Virtual Network管理権限/ストレージアカウントの管理権限の3つ)が設定されています。
+ロールの割り当て結果は、Azure Portalで次のように表示されます。ここでは、「openenv-aro-XXXXX」というAROのサービスプリンシパルに対して、「openenv-XXXXX」リソースグループに対する権限(AROを作るためのカスタム権限/Virtual Network管理権限/ストレージ アカウントの管理権限の3つ)が設定されています。
 
 ![リソースグループに対するアクセス制御](./images/azure-role-assignment.png)
 <div style="text-align: center;">AROクラスターのリソースグループに対するアクセス制御</div>　　
 
 
-続いて、AROクラスター側でアクセス許可を設定します。OpenShiftの[サービスアカウント](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/authentication_and_authorization/understanding-and-creating-service-accounts)の設定を編集します。サービスアカウントは、OpenShiftの各プロジェクトに存在するオブジェクトであり、ユーザーの認証情報を共有せずに各コンポーネントがAPIアクセスを制御するための方法を提供します。ここでは、Azure Filesのプロビジョニングの際に、Azureストレージアカウントとキーを保存するOpenShiftシークレットを作成・取得するための権限が「persistent-volume-binder」サービスアカウントに必要となるため、「oc adm policy add-cluster-role-to-user」コマンドで割り当てています。
+続いて、AROクラスター側でアクセス許可を設定します。OpenShiftの[サービスアカウント](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/authentication_and_authorization/understanding-and-creating-service-accounts)の設定を編集します。サービスアカウントは、OpenShiftの各プロジェクトに存在するオブジェクトであり、ユーザーの認証情報を共有せずに各コンポーネントがAPIアクセスを制御するための方法を提供します。ここでは、Azure Filesのプロビジョニングの際に、Azureストレージ アカウントとキーを保存するOpenShiftシークレットを作成・取得するための権限が「persistent-volume-binder」サービスアカウントに必要となるため、「oc adm policy add-cluster-role-to-user」コマンドで割り当てています。
 ```
 $ :↓ OpenShift CLIであるocコマンドを利用して、管理ユーザー(kubeadmin)でログイン
 $ oc login --token=sha256~XXXXX --server=https://api.myopendomain01.japaneast.aroapp.io:6443
@@ -138,11 +138,11 @@ $ oc adm policy add-cluster-role-to-user azure-secret-reader system:serviceaccou
 最後にAzure Filesを利用するためのストレージクラスを作成するために、YAMLファイルを作成して、「oc create」コマンドを実行します。主なパラメータの説明は次のとおりです。
 
 - name: 作成するストレージクラスの任意の名前。ここでは「azure-files」を指定
-- location: ストレージアカウントを作成したリージョン(East US)を指定
-- secretNamespace: Azureストレージアカウントとキーを保存するプロジェクト(kube-system)を指定
+- location: ストレージ アカウントを作成したリージョン(East US)を指定
+- secretNamespace: Azureストレージ アカウントとキーを保存するプロジェクト(kube-system)を指定
 - skuName: Azure FilesのSKUを指定
-- storageAccount: 作成したストレージアカウントを指定
-- resourceGroup: ストレージアカウントを作成したリソースグループを指定
+- storageAccount: 作成したストレージ アカウントを指定
+- resourceGroup: ストレージ アカウントを作成したリソースグループを指定
 
 ```
 $ cat << EOF > azure-storageclass-azure-file.yaml
@@ -206,7 +206,7 @@ Podのターミナルからマウント状況を確認すると、CIFSプロト�
 ![Podの情報確認](./images/pod-terminal2.png)
 <div style="text-align: center;">Podの情報確認</div>　
 
-また、Azure Portalにアクセスできる場合は、Azure Filesの作成に利用しているストレージアカウントを選択して、左サイドメニューの「ファイル共有」から、現在のAzure Filesの利用状況を確認できます。この演習では、受講者はAzure Portalへのアクセス権限を持たないことを想定しますので、実際にアクセスして確認することはできません。
+また、Azure Portalにアクセスできる場合は、Azure Filesの作成に利用しているストレージ アカウントを選択して、左サイドメニューの「ファイル共有」から、現在のAzure Filesの利用状況を確認できます。この演習では、受講者はAzure Portalへのアクセス権限を持たないことを想定しますので、実際にアクセスして確認することはできません。
 
 ![ファイル共有利用状況の確認](./images/azure-portal-files.png)
 <div style="text-align: center;">Azure Portalでのファイル共有利用状況の確認</div>　
