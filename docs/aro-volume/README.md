@@ -213,7 +213,7 @@ Podのターミナルからマウント状況を確認すると、CIFSプロト�
 <div style="text-align: center;">Azure Portalでのファイル共有利用状況の確認</div>　
 
 
-ここで作成したPodとは別のPodを新しく作成して、複数のPodから同じPVCを利用することで、1つのファイルシステムを共有できることを確認します。前述のPod作成に利用したYAMLファイルで、「name: test-azure-files1」を「name: test-azure-files2」などに変更することで、変更したPod名で新規Podを実行してみます。すると、「test-azure-files2」Podでもマウント先のディレクトリへのファイル作成/削除や、「test-azure-files1」Podで作成したファイルの修正ができることを、当該Podの「ターミナル」タブから確認してみてください。
+ここで作成したPodとは別のPodを新しく作成して、複数のPodから同じPVCを利用することで、1つのファイルシステムを共有できることを確認します。前述のPod作成に利用したYAMLファイルで、「name: test-azure-files1」を「name: test-azure-files2」などに変更することで、変更したPod名で新規Podを実行してみます。「test-azure-files2」Podでもマウント先のディレクトリへのファイル作成/削除や、「test-azure-files1」Podで作成したファイルの修正ができることを、当該Podの「ターミナル」タブから確認してみてください。
 
 
 これでAROクラスターでの、永続ボリュームとしてのAzure Disk/Filesを利用する設定と確認が完了しました。次の演習の[Azure Service Operator による Azure リソースの利用](../aro-azure-resource)に進んでください。
