@@ -185,7 +185,7 @@ Azure Diskの時と同様に、次のYAMLファイルを利用して、作成し
 apiVersion: v1
 kind: Pod
 metadata:
- name: test-azure-files
+ name: test-azure-files1
 spec:
  volumes:
    - name: azure-files-vol
@@ -195,7 +195,7 @@ spec:
    - name: test-azure-files
      image: centos:latest
      command: [ "/bin/bash", "-c", "--" ]
-     args: [ "while true; do touch /mnt/azure-files-data/verify-azure-files && echo 'hello azure-files' && sleep 30; done;" ]
+     args: [ "while true; do echo 'hello azure-files' && sleep 30; done;" ]
      volumeMounts:
        - mountPath: "/mnt/azure-files-data"
          name: azure-files-vol
@@ -206,10 +206,14 @@ Podのターミナルからマウント状況を確認すると、CIFSプロト�
 ![Podの情報確認](./images/pod-terminal2.png)
 <div style="text-align: center;">Podの情報確認</div>　
 
+
 また、Azure Portalにアクセスできる場合は、Azure Filesの作成に利用しているストレージ アカウントを選択して、左サイドメニューの「ファイル共有」から、現在のAzure Filesの利用状況を確認できます。この演習では、受講者はAzure Portalへのアクセス権限を持たないことを想定しますので、実際にアクセスして確認することはできません。
 
 ![ファイル共有利用状況の確認](./images/azure-portal-files.png)
 <div style="text-align: center;">Azure Portalでのファイル共有利用状況の確認</div>　
+
+
+ここで作成したPodとは別のPodを新しく作成して、複数のPodから同じPVCを利用することで、1つのファイルシステムを共有できることを確認します。前述のPod作成に利用したYAMLファイルで、「name: test-azure-files1」を「name: test-azure-files2」などに変更することで、変更したPod名で新規Podを実行してみます。すると、「test-azure-files2」Podでもマウント先のディレクトリへのファイル作成/削除や、「test-azure-files1」Podで作成したファイルの修正ができることを、当該Podの「ターミナル」タブから確認してみてください。
 
 
 これでAROクラスターでの、永続ボリュームとしてのAzure Disk/Filesを利用する設定と確認が完了しました。次の演習の[Azure Service Operator による Azure リソースの利用](../aro-azure-resource)に進んでください。
