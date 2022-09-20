@@ -43,12 +43,12 @@ The output includes credentials that you must protect. Be sure that you do not i
 
 これらのメモしておいた4つの値をもとに、Azure Service Operatorが利用する認証情報としてのOpenShiftシークレットを作成します。各パラメータの説明は次のとおりです。
 
-- name: 作成するシークレットの名前。Azure Service Operatorは「azureoperatorsettings」という名前のシークレットを利用するようになっているので、この名前を指定
-- namespace: シークレットを作成場所となるプロジェクト名。Azure Service Operatorがインストールされる「openshift-operators」を指定
-- AZURE_TENANT_ID: AzureのテナントID。メモしておいた「tenant」の値を指定
-- AZURE_SUBSCRIPTION_ID: AzureのサブスクリプションID。メモしておいた「id」の値を指定
-- AZURE_CLIENT_ID: AzureのサービスプリンシパルID。メモしておいた「appId」の値を指定
-- AZURE_CLIENT_SECRET: 上記サービスプリンシパルのシークレット。メモしておいた「password」の値を指定
+- `name`: 作成するシークレットの名前。Azure Service Operatorは「azureoperatorsettings」という名前のシークレットを利用するようになっているので、この名前を指定
+- `namespace`: シークレットを作成場所となるプロジェクト名。Azure Service Operatorがインストールされる「openshift-operators」を指定
+- `AZURE_TENANT_ID`: AzureのテナントID。メモしておいた「tenant」の値を指定
+- `AZURE_SUBSCRIPTION_ID`: AzureのサブスクリプションID。メモしておいた「id」の値を指定
+- `AZURE_CLIENT_ID`: AzureのサービスプリンシパルID。メモしておいた「appId」の値を指定
+- `AZURE_CLIENT_SECRET`: 上記サービスプリンシパルのシークレット。メモしておいた「password」の値を指定
 
 ```
 $ cat << EOF  > azure-service-operator-secrets.txt 
