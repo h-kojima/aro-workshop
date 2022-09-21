@@ -87,9 +87,9 @@ secret/azureoperatorsettings created
 
 Administratorパースペクティブの「インストール済みのOperator」から「Azure Service Operator」を選択して、右上メニューの「VirtualNetwork」を選択します。そして、「VirtualNetworkの作成」をクリックして、各パラメータの値を入力します。
 
-- 名前: 任意の名前を指定できますが、この演習では1つのAzureリソースグループの中に複数のVirtual Networkを作成するため、名前の重複はできません。そのため、他の受講者が指定するリソース名と重複しないような名前(この例では「test-vnet-sample-20」)を指定してください。
-- Location: 予め作成しておいたリソースグループのリージョン、この例では「JapanEast」を指定しています。なお、作成するVirtual Networkリソースのリージョンについて、リソースグループのリージョンと違うリージョン、例えば「SouthCentralUS」などを指定することもできます。
-- ResourceGroup: 予め作成しておいたリソースグループの名前を指定します。この例では「aro-handson-rg」を指定します。
+- `名前`: 任意の名前を指定できますが、この演習では1つのAzureリソースグループの中に複数のVirtual Networkを作成するため、名前の重複はできません。そのため、他の受講者が指定するリソース名と重複しないような名前(この例では「test-vnet-sample-20」)を指定してください。
+- `Location`: 予め作成しておいたリソースグループのリージョン、この例では「JapanEast」を指定しています。なお、作成するVirtual Networkリソースのリージョンについて、リソースグループのリージョンと違うリージョン、例えば「SouthCentralUS」などを指定することもできます。
+- `ResourceGroup`: 予め作成しておいたリソースグループの名前を指定します。この例では「aro-handson-rg」を指定します。
 
 アドレス空間やサブネットも指定できますが、これらはデフォルトの値を利用します。最後に「作成」をクリックして、Virtual Networkのリソースを作成します。
 
