@@ -1,6 +1,6 @@
 ## Azure Service Operator による Azureリソースの利用
 
-### [デモ]Azure Service Operatorの利用準備
+### [デモ] Azure Service Operatorの利用準備
 
 ※ここで紹介している内容は、インストラクターによって紹介されるデモ手順であり、受講者はコマンド/GUI操作を実施する必要はありません。次の「[ハンズオン]Azure Service Operatorを利用したAzure Virtual Networkの作成」まで読み進めて下さい。
 
@@ -81,7 +81,7 @@ secret/azureoperatorsettings created
 これでAzure Service Operatorを利用する準備は完了です。
 
 
-### [ハンズオン]Azure Service Operatorを利用したAzure Virtual Networkの作成
+### [ハンズオン] Azure Service Operatorを利用したAzure Virtual Networkの作成
 
 前述の手順でインストールされたAzure Service Operatorを利用して、Azure Virtual Networkのリソースを作成します。ここからはAROのローカルユーザでの作業となります。
 
