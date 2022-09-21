@@ -1,6 +1,6 @@
 ## 永続ボリュームとしての Azure Disk/Files の利用設定
 
-### [ハンズオン]Azure Diskの利用
+### [ハンズオン] Azure Diskの利用
 
 AROには、Azure Diskを使用するストレージクラスが事前に設定されています。これにより、[Azure DiskのPremium SSD LRS(Locally Redundant Storage. ローカル冗長ストレージ)オプション](https://azure.microsoft.com/ja-jp/pricing/details/managed-disks/)がすぐに使えるように設定されています。
 
@@ -68,9 +68,9 @@ test-azure-diskという名前でPodが作成されて、Podにより「test-pvc
 ここで上記画像にあるように、ターミナルから、echoコマンドなどで永続ボリュームのマウントポイントである「/mnt/azure-disk-data」ディレクトリに、適当なファイルを作成します。Podを削除(該当Podを選択して、「アクション」->「Podの削除」を選択)した後に、再度「test-pvc-20」PVCを指定してPodを作成すると、作成したテストファイルが残っていることを確認できます。
 
 
-### [デモ]Azure Filesの利用準備
+### [デモ] Azure Filesの利用準備
 
-※ここで紹介している内容は、インストラクターによって紹介されるデモ手順であり、受講者はコマンド/GUI操作を実施する必要はありません。次の「[ハンズオン]Azure Filesの利用」まで読み進めて下さい。
+※ここで紹介している内容は、インストラクターによって紹介されるデモ手順であり、受講者はコマンド/GUI操作を実施する必要はありません。次の「[ハンズオン] Azure Filesの利用」まで読み進めて下さい。
 
 AROクラスターの複数のコンピュートノードから同時に読み書き可能な永続ボリュームとして、[Azure Files](https://azure.microsoft.com/ja-jp/pricing/details/storage/files/)を利用するように設定できます。このために、Azure Filesを利用するためのストレージクラスを、AROの管理ユーザーで作成する必要があります。
 
@@ -137,12 +137,12 @@ $ oc adm policy add-cluster-role-to-user azure-secret-reader system:serviceaccou
 
 最後にAzure Filesを利用するためのストレージクラスを作成するために、YAMLファイルを作成して、「oc create」コマンドを実行します。主なパラメータの説明は次のとおりです。
 
-- name: 作成するストレージクラスの任意の名前。ここでは「azure-files」を指定
-- location: ストレージ アカウントを作成したリージョン(East US)を指定
-- secretNamespace: Azureストレージ アカウントとキーを保存するプロジェクト(kube-system)を指定
-- skuName: Azure FilesのSKUを指定
-- storageAccount: 作成したストレージ アカウントを指定
-- resourceGroup: ストレージ アカウントを作成したリソースグループを指定
+- `name`: 作成するストレージクラスの任意の名前。ここでは「azure-files」を指定
+- `location`: ストレージ アカウントを作成したリージョン(East US)を指定
+- `secretNamespace`: Azureストレージ アカウントとキーを保存するプロジェクト(kube-system)を指定
+- `skuName`: Azure FilesのSKUを指定
+- `storageAccount`: 作成したストレージ アカウントを指定
+- `resourceGroup`: ストレージ アカウントを作成したリソースグループを指定
 
 ```
 $ cat << EOF > azure-storageclass-azure-file.yaml
@@ -170,7 +170,7 @@ $ oc create -f azure-storageclass-azure-file.yaml
 
 
 
-### [ハンズオン]Azure Filesの利用
+### [ハンズオン] Azure Filesの利用
 
 ここまでの手順によって設定された「azure-files」ストレージクラスにより、Azure Filesを永続ボリュームとして利用できます。永続ボリュームを利用する際は、Azure Diskの時と同様に、「ストレージ」→「永続ボリューム要求」→「永続ボリューム要求の作成」から、PVCを作成することで利用できるようになります。
 
