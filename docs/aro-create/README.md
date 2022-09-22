@@ -2,6 +2,10 @@
 
 ### 前準備
 
+AROクラスターには、少なくともトータルで40コア以上の仮想マシンを作成する必要があります。Azureリソースクォータがこの要件を満たさない場合、リソースの制限値の引き上げが必要となります。詳細は下記をご参照ください。
+
+[参考情報] [「チュートリアル: Azure Red Hat OpenShift 4 クラスターを作成する」の「開始する前に」](https://learn.microsoft.com/ja-jp/azure/openshift/tutorial-create-cluster#before-you-begin) を参照
+
 Azure PortalかAzure CLIを利用して、AROクラスターをデプロイできます。Azure Portalを利用する場合は、Azure Portalにサインインして、AROを利用するための[サービスプリンシパル](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/howto-create-service-principal-portal)(各ユーザーに設定するRBACのように、各サービスに設定可能なRBAC. Azure特有用語)を作成する必要があります。「Azure PortalからAROを作成する」というサービスが、「AROクラスターについての読み書き(作成/削除)を可能にする」権限を、サービスプリンシパルによって設定します。
 
 サービスプリンシパルは、Azure Active Directoryのメニューから作成できます。[Azure Portal](https://portal.azure.com)にログインして、「Azure Active Directory」メニューを選択し、「アプリの登録」をクリックします。その後、アプリケーションの登録画面で、任意のアプリケーション名(この例では、aro4)を入力して、残りのパラメータはデフォルトのまま「登録」をクリックします。
