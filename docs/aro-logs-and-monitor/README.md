@@ -6,9 +6,9 @@
 > Container insights により、Kubernetes で使用可能なコントローラー、ノード、およびコンテナーから Metrics API 経由でメモリやプロセッサのメトリックが収集されることで、パフォーマンスを可視化します。 Kubernetes クラスターからの監視を有効化すると、コンテナー化されたバージョンの Linux 向けの Log Analytics エージェントを通じて、メトリックとコンテナー ログが自動的に収集されます。 メトリックは Azure Monitor のメトリック データベースに送信されます。 ログ データは Log Analytics ワークスペースに送信されます。
 
 ![Container Insightsのイメージ](./images/azmon-containers-architecture-01.png)
-<div style="text-align: center;">Container Insightsのイメージ<br>
-引用元: Container Insights の概要 https://learn.microsoft.com/ja-jp/azure/azure-monitor/containers/container-insights-overview </div>　　
+<div style="text-align: center;">Container Insightsのイメージ</div>
 
+**[上記文章と画像の引用元]** [Container Insights の概要](https://learn.microsoft.com/ja-jp/azure/azure-monitor/containers/container-insights-overview)
 
 Container Insightsがサポートする環境は、Azure Kubernetes Service (AKS)と、AROなどのAzure Arc 対応 Kubernetes クラスターとなります。AROでContainer Insightsの利用を開始するには、Azure Arc 対応 Kubernetes クラスターでContainer Insightsを有効にするための手順を実施します。手順の詳細は、下記のMicrosoftの公式ドキュメントを参考にしてください。
 
