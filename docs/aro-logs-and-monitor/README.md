@@ -164,7 +164,7 @@ AROクラスターでは、MicrosoftとRed HatのSREチームがロギングサ�
 
 - `アプリケーションログ`: `openshift-*`,`kube-*`,`default`以外のプロジェクトにデプロイされるアプリケーションのログ(STDOUT(標準出力)に送信されるログ)を収集します。
 - `インフラストラクチャーログ`: AROクラスター作成時にデフォルトで作成される`openshift-*`,`kube-*`プロジェクトにある、インフラストラクチャー関連のログを収集します。
-- `セキュリティ監査ログ`: 通常、AROクラスターの監査ログは、MicroSoftとRed HatのSREチームによって管理され、[問題調査の際に、AROの利用者のサポートケースを使用したリクエストに伴って提供](https://learn.microsoft.com/ja-jp/azure/openshift/responsibility-matrix#change-management)されます。そのため、AROの利用者はこれらのログを保存する必要は必ずしもありませんが、Lokiを利用することで、利用者も随時確認できるようになります。
+- `セキュリティ監査ログ`: ノード監査システム(auditd)で生成されるログ(/var/log/audit/audit.log)、Kubernetes apiserver、OpenShift apiserverの監査ログを収集します。通常、AROクラスターの監査ログは、MicroSoftとRed HatのSREチームによって管理され、[問題調査の際に、AROの利用者のサポートケースを使用したリクエストに伴って提供](https://learn.microsoft.com/ja-jp/azure/openshift/responsibility-matrix#change-management)されます。そのため、AROの利用者はこれらのログを保存する必要は必ずしもありませんが、Lokiを利用することで、利用者も随時確認できるようになります。
 
 ![AROクラスター上のアプリケーションのログ確認](./images/loki-app-logs.png)
 <div style="text-align: center;">AROクラスター上のアプリケーションのログ確認</div>　　
