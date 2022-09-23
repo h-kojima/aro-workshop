@@ -43,6 +43,7 @@ Azure Red Hat OpenShift (ARO) Workshops プロジェクトは、インストラ�
 1. [\[ハンズオン\] アプリケーションのデプロイのクイックスタート](docs/aro-app-deploy-quickstart)
 1. [\[デモとハンズオン\] 永続ボリュームとしての Azure Disk/Files の利用設定](docs/aro-volume)
 1. [\[デモとハンズオン\] Azure Service Operator による Azureリソースの利用](docs/aro-azure-resource)
+1. [\[ハンズオン\] AROクラスターのロギングとモニタリング](docs/aro-logs-and-monitor)
 1. [\[ハンズオン\] コンピュートノードの追加/削除とオートスケールの設定](docs/aro-nodes)
 1. [\[デモ\] AROクラスターのアップグレード](docs/aro-upgrade)
 1. [\[デモ\] AROクラスターの削除](docs/aro-delete)

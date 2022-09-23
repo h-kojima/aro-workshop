@@ -117,7 +117,7 @@ Azure Portal上でAROクラスターのデプロイ状況を確認できます�
 <div style="text-align: center;">AROクラスターのリソース確認</div>　　
 
 
-OpenShiftコンソールURLにアクセスすると、ログイン画面が表示されます。次のコマンドで確認した、AROクラスターの管理者アカウントでログインできます。azコマンドで指定する「--name」と「--resource-group」オプションは、作成したAROクラスターの名前とリソースグループの名前を指定します。この例では、「testmyaro01」と「aro-handson-rg01」です。
+OpenShiftコンソールURLにアクセスすると、ログイン画面が表示されます。次のコマンドで確認した、AROクラスターの管理者アカウントでログインできます。azコマンドで指定する`--name`と`--resource-group`オプションは、作成したAROクラスターの名前とリソースグループの名前を指定します。この例では、「testmyaro01」と「aro-handson-rg01」です。
 
 ```
 $ az login
