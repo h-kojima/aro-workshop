@@ -26,7 +26,7 @@ AROクラスターは、デフォルトでPrometheusをベースとしたモニ�
 
 AROクラスター全体のリソース利用状況のモニタリング、いわゆる「プラットフォームの監視」とMicrosoftの公式ドキュメントで定義しているものについては、MicrosoftとRed HatのSREチームによって利用されています。AROの責任分担マトリクスによって、プラットフォームの監視については、MicrosoftとRed Hatに責任があると定義しているため、AROの利用者はこれらの情報を気にする必要はありません。後述するコンピュートノードのオートスケール設定が有効になっていない場合、プラットフォームの監視によって得られた情報をもとに、SREチームがAROの利用者に、追加のコンピュートノードやストレージなどのクラスターリソースに必要な変更についてアラートを適宜送信します。
 
-[参考情報] [変更管理 の「容量管理」 (Azure Red Hat OpenShift の責任の概要)](https://learn.microsoft.com/ja-jp/azure/openshift/responsibility-matrix#change-management)
+**[参考情報]** [変更管理 の「容量管理」 (Azure Red Hat OpenShift の責任の概要)](https://learn.microsoft.com/ja-jp/azure/openshift/responsibility-matrix#change-management)
 
 AROクラスターでは、プラットフォームのモニタリング機能を提供するPodが、「openshift-monitoring」というプロジェクトで実行されています。セルフマネージド版のOpenShiftの方では、これに加えて、利用者のプロジェクトのモニタリングに関するカスタム設定(永続ボリュームによる利用者のプロジェクトのメトリクスデータの永続化や、データ保存期間の変更など)を適用するためのPodを、「openshift-user-workload-monitoring」プロジェクトで実行できますが、現時点のARO 4.10では、この機能をサポートしていません。今後のAROのマイナーリリース(4.11以降)でサポートをする予定です。
 
@@ -46,7 +46,7 @@ AROクラスターでは、プラットフォームのモニタリング機能�
 ![「prometheus-k8s」Pod](./images/prometheus-k8s-pod.png)
 <div style="text-align: center;">「prometheus-k8s」Pod</div>　　
 
-[参考情報] [1.2.1. デフォルトのモニターリングコンポーネント](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.10/html/monitoring/understanding-the-monitoring-stack_monitoring-overview#default-monitoring-components_monitoring-overview)
+**[参考情報]** [1.2.1. デフォルトのモニターリングコンポーネント](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.10/html/monitoring/understanding-the-monitoring-stack_monitoring-overview#default-monitoring-components_monitoring-overview)
 
 
 AROクラスターのPrometheusでは、メトリクスデータの保持期間は15日間です。また、これらのデータは永続ボリュームによって永続化されておらず、[設定変更も許可されていません。](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)そのため、利用者が作成したプロジェクトのメトリクスデータ永続化が必要な場合は、現時点では前述したとおり、Azure Monitorの機能の1つであるContainer Insightsの利用を推奨します。
@@ -63,7 +63,7 @@ PodのCPUとメモリ使用については、「リミット(制限)」と「リ
 
 「リミット」がない場合、リクエストされた値以上のリソースが使用される可能性があります。また、「リミット」のみ定義されている場合は、リミットに一致する値がリソースとして、スケジューラによってPodに自動的に割り当てられます。
 
-[参考情報] [コンテナのリソース管理の「要求と制限」](https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/)を参照
+**[参考情報]** [コンテナのリソース管理の「要求と制限」](https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/)を参照
 
 このダッシュボードにある、CPUやメモリの使用率は、これらの「リミット」と「リクエスト」の値に対してどのくらい使用されているか、という情報となります。上記画像の例では、使用率は16.26%となっているため、まだまだリソースに余裕があるということを示しています。
 
@@ -82,7 +82,7 @@ PodのCPUとメモリ使用については、「リミット(制限)」と「リ
 
 ### [参考手順] AROクラスターのアラート利用
 
-※ここで紹介している内容は参考手順です。本演習環境用に、アラート送信先となるサンプルメールアドレスやslackチャネルは用意していませんので、受講者はコマンド/GUI操作を実施する必要はありません。次の「[参考情報] AROクラスターのロギング」まで読み進めて下さい。
+※ここで紹介している内容は参考手順です。本演習環境用に、アラート送信先となるサンプルメールアドレスやslackチャネルなどは用意していませんので、受講者はコマンド/GUI操作を実施する必要はありません。次の「[参考情報] AROクラスターのロギング」まで読み進めて下さい。
 
 AROクラスターでは、MicrosoftとRed HatのSREチームによって、PrometheusのAlertmanagerによる様々なアラートが利用されています。これは、予め定義しておいた条件式(アラートルール)に一致した場合、アラートが表示されるという仕組みです。定義されているアラートルールの一覧は、AROクラスターの管理者権限を持つユーザーでログインした後に、Administratorパースペクティブの「アラート」メニューから確認できます。アラートルールには、AROクラスターのOperatorがダウンしているなどのCriticalなアラートから、AROクラスターのUpdateが利用できるといった情報まで、様々なものが定義されています。
 
@@ -90,7 +90,7 @@ AROクラスターでは、MicrosoftとRed HatのSREチームによって、Prom
 <div style="text-align: center;">アラートルールの一覧</div>　
 
 
-なお、AROクラスターの[Alertmanagerの設定変更は許可されていません](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)が、追加のレシーバー(アラート送信先)を設定することはサポートされています。アップデート情報に関するアラート送信を想定した設定手順を見ていきましょう。
+なお、AROクラスターの[Alertmanagerの設定変更は許可されていません](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)が、追加のレシーバー(アラート送信先)を設定することはサポートされています。ここでは、アップデート情報に関するアラート送信を想定した設定手順を見ていきましょう。
 
 
 AROクラスターに管理者権限を持つユーザーでログインして、「ホーム」の「概要」メニューにある「アラートレシーバーの設定」をクリックします。
@@ -170,7 +170,7 @@ AROクラスターでは、MicrosoftとRed HatのSREチームがロギングサ�
 <div style="text-align: center;">AROクラスター上のアプリケーションのログ確認</div>　　
 
 
-[参考情報] [第5章 Loki](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/logging/cluster-logging-loki)
+**[参考情報]** [第5章 Loki](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/logging/cluster-logging-loki)
 
 AROでLokiのロギングサブシステムをデプロイする場合、コントローラ/コンピュートノードのメトリクス収集(Lokiでは、collectorという名前のPodが該当。前述のmdsd Podとは別に、独立して動きます)に利用するものを除き、全てコンピュートノードで実行されます。なお、これらのPodを、[コントローラノードで実行することは許可されていません。](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)どのくらいのリソースが必要になるかは、上記ドキュメントの「第5章 Loki」に記載しているので、そちらをサイジングの目安にしてください。
 
