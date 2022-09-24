@@ -49,7 +49,7 @@ AROクラスターでは、プラットフォームのモニタリング機能�
 **[参考情報]** [1.2.1. デフォルトのモニターリングコンポーネント](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.10/html/monitoring/understanding-the-monitoring-stack_monitoring-overview#default-monitoring-components_monitoring-overview)
 
 
-AROクラスターのPrometheusでは、メトリクスデータの保持期間は15日間です。また、これらのデータは永続ボリュームによって永続化されておらず、[設定変更も許可されていません。](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)そのため、利用者が作成したプロジェクトのメトリクスデータ永続化が必要な場合は、現時点では前述したとおり、Azure Monitorの機能の1つであるContainer Insightsの利用を推奨します。
+AROクラスターのPrometheusでは、メトリクスデータの保存期間は15日間です。また、これらのデータは永続ボリュームによって永続化されておらず、[設定変更も許可されていません。](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)そのため、利用者が作成したプロジェクトのメトリクスデータ永続化が必要な場合は、現時点では前述したとおり、Azure Monitorの機能の1つであるContainer Insightsの利用を推奨します。
 
 
 ### [ハンズオン] AROクラスターのメトリクスデータの確認
