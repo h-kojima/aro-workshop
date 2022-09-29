@@ -24,24 +24,34 @@ Container Insightsがサポートする環境は、Azure Kubernetes Service (AKS
 
 AROクラスターは、デフォルトでPrometheusをベースとしたモニタリング機能が有効になっています。このモニタリング機能のユースケースは、AROクラスター全体のリソース利用状況を見るものと、AROの利用者が作成したプロジェクト内のリソース利用状況を見るものの2つに別れます。
 
-AROクラスター全体のリソース利用状況のモニタリング、いわゆる「プラットフォームの監視」とMicrosoftの公式ドキュメントで定義しているものについては、MicrosoftとRed HatのSREチームによって利用されています。AROの責任分担マトリクスによって、プラットフォームの監視については、MicrosoftとRed Hatに責任があると定義しているため、AROの利用者はこれらの情報を気にする必要はありません。後述するコンピュートノードのオートスケール設定が有効になっていない場合、プラットフォームの監視によって得られた情報をもとに、SREチームがAROの利用者に、追加のコンピュートノードやストレージなどのクラスターリソースに必要な変更についてアラートを適宜送信します。
+AROクラスター全体のリソース利用状況のモニタリング、いわゆる「プラットフォームの監視」とMicrosoftの公式ドキュメントで定義しているものについては、MicrosoftとRed HatのSREチームによって利用されています。AROの責任分担マトリクスによって、プラットフォームの監視については、MicrosoftとRed Hatに責任があると定義しているため、AROの利用者はこれらの情報を気にする必要はありません。
+
+後述するコンピュートノードのオートスケール設定が有効になっていない場合、プラットフォームの監視によって得られた情報をもとに、SREチームがAROの利用者に、追加のコンピュートノードやストレージなどのクラスターリソースに必要な変更についてアラートを適宜送信します。
 
 **[参考情報]** [変更管理 の「容量管理」 (Azure Red Hat OpenShift の責任の概要)](https://learn.microsoft.com/ja-jp/azure/openshift/responsibility-matrix#change-management)
 
-AROクラスターでは、プラットフォームのモニタリング機能を提供するPodが、「openshift-monitoring」というプロジェクトで実行されています。セルフマネージド版のOpenShiftの方では、これに加えて、利用者のプロジェクトのモニタリングに関するカスタム設定(永続ボリュームによる利用者のプロジェクトのメトリクスデータの永続化や、データ保存期間の変更など)を適用するためのPodを、「openshift-user-workload-monitoring」プロジェクトで実行できますが、現時点のARO 4.10では、この機能をサポートしていません。今後のAROのマイナーリリース(4.11以降)でサポートをする予定です。
+AROクラスターでは、プラットフォームのモニタリング機能を提供するPodが、「openshift-monitoring」というプロジェクトで実行されています。
+
+セルフマネージド版のOpenShiftの方では、これに加えて、利用者のプロジェクトのモニタリングに関するカスタム設定(永続ボリュームによる利用者のプロジェクトのメトリクスデータの永続化や、データ保存期間の変更など)を適用するためのPodを、「openshift-user-workload-monitoring」プロジェクトで実行できます。
+
+しかし、現時点のARO 4.10では、この機能をサポートしていません。今後のAROのマイナーリリース(4.11以降)でサポートをする予定です。
 
 「openshift-monitoring」プロジェクトの情報は、AROクラスターの管理者権限を持つユーザーでログインすることで確認できます。
 
 ![モニタリングプロジェクトの一覧](./images/monitoring-projects.png)
 <div style="text-align: center;">モニタリングプロジェクトの一覧</div>　　
 
-「openshift-monitoring」プロジェクトで実行されるPodは、全てのコントローラ/コンピュートノードで実行されるnode-exporter(メトリクス収集に利用)などの一部のPodを除き、大半がコンピュートノード上で実行されるようになっています。これらのPodを選択して、実行しているノード名に「worker」が含まれている(コンピュートノードを示します)ことを確認してみてください。
+「openshift-monitoring」プロジェクトで実行されるPodは、全てのコントローラ/コンピュートノードで実行されるnode-exporter(メトリクス収集に利用)などの一部のPodを除き、大半がコンピュートノード上で実行されるようになっています。
+
+これらのPodを選択して、実行しているノード名に「worker」が含まれている(コンピュートノードを示します)ことを確認してみてください。
 
 ![「openshift-monitoring」プロジェクトのPod](./images/openshift-monitoring-pods.png)
 <div style="text-align: center;">「openshift-monitoring」プロジェクトのPod</div>　　
 
 
-この中で、比較的大きなサイズのメモリを使用する「prometheus-k8s」Podも同様に、コンピュートノード上で実行されます。この「prometheus-k8s」Podはレプリカ数が2と定義されており、コンピュートノードの追加/削除に伴ってPodの数は増減しません。これらのPodはAROクラスターで、デフォルトで実行されるPodであり、[コントローラノードへの移動や変更/削除は許可されていません。](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)こうした情報を、AROクラスターのサイジングの際に参考にしてください。
+この中で、比較的大きなサイズのメモリを使用する「prometheus-k8s」Podも同様に、コンピュートノード上で実行されます。この「prometheus-k8s」Podはレプリカ数が2と定義されており、コンピュートノードの追加/削除に伴ってPodの数は増減しません。
+
+これらのPodはAROクラスターで、デフォルトで実行されるPodであり、[コントローラノードへの移動や変更/削除は許可されていません。](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)こうした情報を、AROクラスターのサイジングの際に参考にしてください。
 
 ![「prometheus-k8s」Pod](./images/prometheus-k8s-pod.png)
 <div style="text-align: center;">「prometheus-k8s」Pod</div>　　
@@ -49,7 +59,9 @@ AROクラスターでは、プラットフォームのモニタリング機能�
 **[参考情報]** [1.2.1. デフォルトのモニターリングコンポーネント](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.10/html/monitoring/understanding-the-monitoring-stack_monitoring-overview#default-monitoring-components_monitoring-overview)
 
 
-AROクラスターのPrometheusでは、メトリクスデータの保存期間は15日間です。また、これらのデータは永続ボリュームによって永続化されておらず、[設定変更も許可されていません。](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)そのため、利用者が作成したプロジェクトのメトリクスデータ永続化が必要な場合は、現時点では前述したとおり、Azure Monitorの機能の1つであるContainer Insightsの利用を推奨します。
+AROクラスターのPrometheusでは、メトリクスデータの保存期間は15日間です。また、これらのデータは永続ボリュームによって永続化されておらず、[設定変更も許可されていません。](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)
+
+そのため、利用者が作成したプロジェクトのメトリクスデータ永続化が必要な場合は、現時点では前述したとおり、Azure Monitorの機能の1つであるContainer Insightsの利用を推奨します。
 
 
 ### [ハンズオン] プロジェクトのメトリクスデータの確認
@@ -74,7 +86,9 @@ PodのCPUとメモリ使用については、「リミット(制限)」と「リ
 <div style="text-align: center;">Prometheusのクエリ</div>　　
 
 
-「イベント」タブでは、プロジェクト上の様々な記録を確認できます。PodやPVCなどを作成した際に実行される様々な操作記録(イベント)がストリーミングされていることを確認してみてください。これらのイベントは、ARO/OpenShiftの様々なクラスター情報を保存する「etcd」データベースに保存されますが、保存期間は「3時間」となります。3時間を過ぎたらetcdデータベースから消去されます。この値は[ハードコーディング](https://github.com/openshift/cluster-kube-apiserver-operator/blob/master/bindata/assets/config/defaultconfig.yaml#L110)されており、AROの利用者が値を変更することはサポートしていません。
+「イベント」タブでは、プロジェクト上の様々な記録を確認できます。PodやPVCなどを作成した際に実行される様々な操作記録(イベント)がストリーミングされていることを確認してみてください。
+
+これらのイベントは、ARO/OpenShiftの様々なクラスター情報を保存する「etcd」データベースに保存されますが、保存期間は「3時間」となります。3時間を過ぎたらetcdデータベースから消去されます。この値は[ハードコーディング](https://github.com/openshift/cluster-kube-apiserver-operator/blob/master/bindata/assets/config/defaultconfig.yaml#L110)されており、AROの利用者が値を変更することはサポートしていません。
 
 ![ストリーミングされたイベントの例](./images/events.png)
 <div style="text-align: center;">ストリーミングされたイベントの例</div>　
@@ -84,7 +98,9 @@ PodのCPUとメモリ使用については、「リミット(制限)」と「リ
 
 ※ここで紹介している内容は参考手順です。本演習環境用に、アラート送信先となるサンプルメールアドレスやslackチャネルなどは用意していませんので、受講者はコマンド/GUI操作を実施する必要はありません。次の「[参考情報] AROクラスターのロギング」まで読み進めて下さい。
 
-AROクラスターでは、MicrosoftとRed HatのSREチームによって、PrometheusのAlertmanagerによる様々なアラートが利用されています。これは、予め定義しておいた条件式(アラートルール)に一致した場合、アラートが表示されるという仕組みです。定義されているアラートルールの一覧は、AROクラスターの管理者権限を持つユーザーでログインした後に、Administratorパースペクティブの「アラート」メニューから確認できます。アラートルールには、AROクラスターのOperatorがダウンしているなどのCriticalなアラートから、AROクラスターのUpdateが利用できるといった情報まで、様々なものが定義されています。
+AROクラスターでは、MicrosoftとRed HatのSREチームによって、PrometheusのAlertmanagerによる様々なアラートが利用されています。これは、予め定義しておいた条件式(アラートルール)に一致した場合、アラートが表示されるという仕組みです。
+
+定義されているアラートルールの一覧は、AROクラスターの管理者権限を持つユーザーでログインした後に、Administratorパースペクティブの「アラート」メニューから確認できます。アラートルールには、AROクラスターのOperatorがダウンしているなどのCriticalなアラートから、AROクラスターのUpdateが利用できるといった情報まで、様々なものが定義されています。
 
 ![アラートルールの一覧](./images/alertrules-list.png)
 <div style="text-align: center;">アラートルールの一覧</div>　
@@ -98,7 +114,9 @@ AROクラスターに管理者権限を持つユーザーでログインして�
 ![AROクラスターの「概要」画面](./images/overview.png)
 <div style="text-align: center;">AROクラスターの「概要」画面</div>　
 
-すると、次の画面が表示されます。アラートのルーティングにある、各項目の意味は次のとおりです。前述したとおり、Alertmanagerの設定変更は許可されていませんので、デフォルトで使用されているこれらの値を変更することはできません。なお、Prometheusのアラートでは無駄な通知を防ぐため、類似した性質のアラートを1つにまとめるという[グループ化](https://prometheus.io/docs/alerting/latest/alertmanager/#grouping)の概念があり、これらの項目はグループ化に関連するものとなります。
+すると、次の画面が表示されます。アラートのルーティングにある、各項目の意味は次のとおりです。前述したとおり、Alertmanagerの設定変更は許可されていませんので、デフォルトで使用されているこれらの値を変更することはできません。
+
+なお、Prometheusのアラートでは無駄な通知を防ぐため、類似した性質のアラートを1つにまとめるという[グループ化](https://prometheus.io/docs/alerting/latest/alertmanager/#grouping)の概念があり、これらの項目はグループ化に関連するものとなります。
 
 - `グループ (group_by)`: アラートをグループ化するための条件。AROクラスターでは、namespace(プロジェクト)単位で、発生したアラートをグループ化しています。
 - `グループの待機 (group_wait)`: グループ化されたアラートを最初に送信する際の待機時間。この間に発生したアラートは、「group_by」の条件に従ってグループ化されます。Alertmanagerのデフォルト値は30秒となり、AROクラスターもデフォルト値を利用しています。
@@ -111,12 +129,18 @@ AROクラスターに管理者権限を持つユーザーでログインして�
 <div style="text-align: center;">Alertmanagerの設定画面</div>　
 
 
-この設定画面から、アラート送信先となる追加のレシーバーを作成できます。Alertmanagerの設定画面にある「レシーバーの作成」をクリックして、アラート送信先となる情報を入力します。下記画像は、Gmailを使う時の例ですが、他にもPagerDuty/Webhook/Slackが、アラート送信先として指定できます。レシーバー名には、重複しない範囲で任意の名前(この例では、test-receiver20)を使用できます。ラベルのルーティングでは、このラベル値に一致するアラートが設定した宛先に送信されます。この例では、名前に「alertname」、値に「UpdateAvailable」を指定します。入力が完了したら「作成」をクリックして、レシーバーを作成します。
+この設定画面から、アラート送信先となる追加のレシーバーを作成できます。Alertmanagerの設定画面にある「レシーバーの作成」をクリックして、アラート送信先となる情報を入力します。
+
+下記画像は、Gmailを使う時の例ですが、他にもPagerDuty/Webhook/Slackが、アラート送信先として指定できます。レシーバー名には、重複しない範囲で任意の名前(この例では、test-receiver20)を使用できます。
+
+ラベルのルーティングでは、このラベル値に一致するアラートが設定した宛先に送信されます。この例では、名前に「alertname」、値に「UpdateAvailable」を指定します。入力が完了したら「作成」をクリックして、レシーバーを作成します。
 
 ![レシーバーの作成画面](./images/receiver-create.png)
 <div style="text-align: center;">レシーバーの作成画面</div>　
 
-ここでアラートが自動的に送信されるのを待ってもいいのですが、アラート送信テスト間隔を早めたい場合は、先ほど設定したAlertmanagerのレシーバー「test-receiver20」をYAMLファイルで直接編集します。Alertmanagerの「YAML」タブをクリックして、末尾を以下のように編集します。設定したレシーバーに対するグループの間隔と繰り返し間隔を1分間に設定することで、発生したアラートを1分置きに指定した宛先に送信するようになります。
+ここでアラートが自動的に送信されるのを待ってもいいのですが、アラート送信テスト間隔を早めたい場合は、先ほど設定したAlertmanagerのレシーバー「test-receiver20」をYAMLファイルで直接編集します。
+
+Alertmanagerの「YAML」タブをクリックして、末尾を以下のように編集します。設定したレシーバーに対するグループの間隔と繰り返し間隔を1分間に設定することで、発生したアラートを1分置きに指定した宛先に送信するようになります。
 
 ```
 ...<略>...
@@ -139,7 +163,9 @@ AROクラスターに管理者権限を持つユーザーでログインして�
 ![Gmailに届いたアラートメールの例](./images/gmail-alerts.png)
 <div style="text-align: center;">Gmailに届いたアラートメールの例</div>　
 
-後述する手順でAROクラスターのアップグレードを実行した場合、この「UpdateAvailable」アラートの状態が解決済み(アラートの「state」が、「firing」から「resolved」に変更)となり、アラートが自動的に消去されます。上記のレシーバーの作成画面にあります「解決済みのアラートをこのレシーバーに送信しますか？」にチェックを入れておくと、この「解決済み」アラートも自動送信されます。
+後述する手順でAROクラスターのアップグレードを実行した場合、この「UpdateAvailable」アラートの状態が解決済み(アラートの「state」が、「firing」から「resolved」に変更)となり、アラートが自動的に消去されます。
+
+上記のレシーバーの作成画面にあります「解決済みのアラートをこのレシーバーに送信しますか？」にチェックを入れておくと、この「解決済み」アラートも自動送信されます。
 
 ![Gmailに届いた解決済みアラートメールの例](./images/gmail-resolved-alerts.png)
 <div style="text-align: center;">Gmailに届いた解決済みアラートメールの例</div>　
@@ -159,7 +185,9 @@ AROクラスターに管理者権限を持つユーザーでログインして�
 
 ※こちらは参考情報です。読み進めていただき、読み終わりましたら、次の演習に進んでください。
 
-AROクラスターでは、MicrosoftとRed HatのSREチームがロギングサービスとして利用している[Azure Linux monitoring agent (mdsd)](https://github.com/Azure/fluentd-plugin-mdsd) Podが実行されています。このPodは、「openshift-azure-logging」プロジェクトで実行され、全てのコントローラ/コンピュートノードで実行されます。AROクラスターの利用者がコンピュートノードを追加/削除した場合、それに伴って、mdsd Podも自動的に追加/削除されます。AROクラスターの利用者が、[mdsd Podを変更/削除することは許可されていません。](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)
+AROクラスターでは、MicrosoftとRed HatのSREチームがロギングサービスとして利用している[Azure Linux monitoring agent (mdsd)](https://github.com/Azure/fluentd-plugin-mdsd) Podが実行されています。このPodは、「openshift-azure-logging」プロジェクトで実行され、全てのコントローラ/コンピュートノードで実行されます。
+
+AROクラスターの利用者がコンピュートノードを追加/削除した場合、それに伴って、mdsd Podも自動的に追加/削除されます。AROクラスターの利用者が、[mdsd Podを変更/削除することは許可されていません。](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)
 
 ![mdsdの実行状態に関する情報](./images/mdsd1.png)
 ![mdsdの実行状態に関する情報](./images/mdsd2.png)
@@ -180,7 +208,9 @@ AROクラスターでは、MicrosoftとRed HatのSREチームがロギングサ�
 
 **[参考情報]** [第5章 Loki](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/logging/cluster-logging-loki)
 
-AROでLokiのロギングサブシステムをデプロイする場合、コントローラ/コンピュートノードのメトリクス収集(Lokiでは、collectorという名前のPodが該当。前述のmdsd Podとは別に、独立して動きます)に利用するものを除き、全てコンピュートノードで実行されます。なお、これらのPodを、[コントローラノードで実行することは許可されていません。](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)どのくらいのリソースが必要になるかは、上記ドキュメントの「第5章 Loki」に記載しているので、そちらをサイジングの目安にしてください。
+AROでLokiのロギングサブシステムをデプロイする場合、コントローラ/コンピュートノードのメトリクス収集(Lokiでは、collectorという名前のPodが該当。前述のmdsd Podとは別に、独立して動きます)に利用するものを除き、全てコンピュートノードで実行されます。
+
+これらのPodを、[コントローラノードで実行することは許可されていません。](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)どのくらいのリソースが必要になるかは、上記ドキュメントの「第5章 Loki」に記載しているので、そちらをサイジングの目安にしてください。
 
 
 
