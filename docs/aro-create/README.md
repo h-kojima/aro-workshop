@@ -94,6 +94,13 @@ AROを作成/削除するための権限となる、カスタムロールを作�
 <div style="text-align: center;">AROクラスター作成 その1</div>　　  
 
 
+**[Tips]** 指定する「Domain Name」については、既存のAROクラスターで使われているドメイン名を指定した場合、AROクラスターの作成中に次のようなメッセージがAzure Portalに表示されて、作成が途中で終了するので、ドメイン名は他と重複しないものを指定する必要があります。
+
+![AROクラスター作成のエラーメッセージ](./images/aro-deploy-error.png)
+<div style="text-align: center;">AROクラスター作成のエラーメッセージ</div>　　  
+
+
+
 「次: Authentication >」をクリックして、冒頭で作成してメモしておいた、サービスプリンシパル(aro4)のクライアントID(アプリケーションID)とシークレットの値を入力します。続いて「Red Hat pull secret」に[Red Hat Hybrid Cloud Console](https://console.redhat.com/openshift/install/azure/aro-provisioned)から入手したプルシークレットの値(「Copy pull secret」でコピーが可能)を入力します。このプルシークレットにより、ARO上でレッドハットが提供するOperatorなどのコンテンツを利用できるようになります。「次: Networking >」をクリックして、AROが利用するVirtual Networkの作成画面に移動します。ここでは全てデフォルトの値のまま、「次: Tags >」をクリックして、タグの値は何も入力せずに「確認および作成」から、指定したAROクラスターの構成情報を確認して、「作成」をクリックすることでAROクラスターのデプロイが開始されます。
 
 
