@@ -208,7 +208,7 @@ AROクラスターの利用者がコンピュートノードを追加/削除し�
 
 **[参考情報]** [第5章 Loki](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/logging/cluster-logging-loki)
 
-AROでLokiのロギングサブシステムをデプロイする場合、コントローラ/コンピュートノードのメトリクス収集(Lokiでは、collectorという名前のPodが該当。前述のmdsd Podとは別に、独立して動きます)に利用するものを除き、全てコンピュートノードで実行されます。
+AROでLokiのロギングサブシステムをデプロイする場合、コントローラ/コンピュートノードのメトリクス収集(collectorという名前のPodが該当。前述のmdsd Podとは別に、独立して動きます)に利用するものを除き、全てコンピュートノードで実行されます。
 
 これらのPodを、[コントローラノードで実行することは許可されていません。](https://learn.microsoft.com/ja-jp/azure/openshift/support-policies-v4)どのくらいのリソースが必要になるかは、上記ドキュメントの「第5章 Loki」に記載しているので、そちらをサイジングの目安にしてください。
 
