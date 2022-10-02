@@ -96,8 +96,8 @@ AROを作成/削除するための権限となる、カスタムロールを作�
 
 **[Tips]** 指定する「Domain Name」については、既存のAROクラスターで使われているドメイン名を指定した場合、AROクラスターの作成中に次のようなメッセージがAzure Portalに表示されて、作成が途中で終了するので、ドメイン名は他と重複しないものを指定する必要があります。
 
-![AROクラスター作成のエラーメッセージの例](./images/aro-deploy-error.png)
-<div style="text-align: center;">AROクラスター作成のエラーメッセージの例</div>　　  
+![AROクラスター作成時のエラーメッセージの例](./images/aro-deploy-error.png)
+<div style="text-align: center;">AROクラスター作成時のエラーメッセージの例</div>　　  
 
 
 
