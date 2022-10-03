@@ -101,7 +101,9 @@ AROを作成/削除するための権限となる、カスタムロールを作�
 
 
 
-「次: Authentication >」をクリックして、冒頭で作成してメモしておいた、サービスプリンシパル(aro4)のクライアントID(アプリケーションID)とシークレットの値を入力します。続いて「Red Hat pull secret」に[Red Hat Hybrid Cloud Console](https://console.redhat.com/openshift/install/azure/aro-provisioned)から入手したプルシークレットの値(「Copy pull secret」でコピーが可能)を入力します。このプルシークレットにより、ARO上でレッドハットが提供するOperatorなどのコンテンツを利用できるようになります。「次: Networking >」をクリックして、AROが利用するVirtual Networkの作成画面に移動します。ここでは全てデフォルトの値のまま、「次: Tags >」をクリックして、タグの値は何も入力せずに「確認および作成」から、指定したAROクラスターの構成情報を確認して、「作成」をクリックすることでAROクラスターのデプロイが開始されます。
+「次: Authentication >」をクリックして、冒頭で作成してメモしておいた、サービスプリンシパル(aro4)のクライアントID(アプリケーションID)とシークレットの値を入力します。続いて「Red Hat pull secret」に[Red Hat Hybrid Cloud Console](https://console.redhat.com/openshift/install/azure/aro-provisioned)から入手したプルシークレットの値(「Copy pull secret」でコピーが可能)を入力します。このプルシークレットにより、ARO上でレッドハットが提供するOperatorなどのコンテンツを利用できるようになります。
+
+「次: Networking >」をクリックして、AROが利用するVirtual Networkの作成画面に移動します。ここでは全てデフォルトの値のまま、「次: Tags >」をクリックして、タグの値は何も入力せずに「確認および作成」から、指定したAROクラスターの構成情報を確認して、「作成」をクリックすることでAROクラスターのデプロイが開始されます。
 
 
 ![AROクラスター作成 その2](./images/aro-create4.png)
@@ -109,6 +111,9 @@ AROを作成/削除するための権限となる、カスタムロールを作�
 ![AROクラスター作成 その2](./images/aro-create6.png)
 <div style="text-align: center;">AROクラスター作成 その2</div>　　
 
+**[Tips]** 2022年9月時点では、AROクラスター作成時にバージョンを指定することができません。自動的に特定のバージョン(ARO 4.10.20など)が指定されて、AROクラスター作成が実行されます。任意のバージョンを指定したAROクラスターの作成については、現在リクエストが挙げられています。対応状況については、下記をご参照ください。
+
+**[参考情報]** [Ability to install multiple version #208](https://github.com/Azure/OpenShift/issues/208)
 
 Azure Portal上でAROクラスターのデプロイ状況を確認できます。デフォルトの構成だと、およそ40分ほどでAROクラスターのデプロイが完了します。
 
