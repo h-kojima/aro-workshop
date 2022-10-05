@@ -29,6 +29,7 @@ node/testmyaro01-jnlll-worker-japaneast3-6tqgr labeled
 $ : ↓「node-role.kubernetes.io/workerpool-canary=」ラベルが付与されたノードを対象とする
 $ :   OpenShiftのMachineConfigPoolリソースを作成
 $ cat << EOF > worker-canary.yaml
+apiVersion: machineconfiguration.openshift.io/v1
 kind: MachineConfigPool
 metadata:
   name: workerpool-canary
