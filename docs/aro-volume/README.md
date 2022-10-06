@@ -207,7 +207,7 @@ Podのターミナルからマウント状況を確認すると、CIFSプロト�
 <div style="text-align: center;">Podの情報確認</div>　
 
 
-また、Azure Portalにアクセスできる場合は、Azure Filesの作成に利用しているストレージ アカウントを選択して、左サイドメニューの「ファイル共有」から、現在のAzure Filesの利用状況を確認できます。この演習では、受講者はAzure Portalへのアクセス権限を持たないことを想定しますので、実際にアクセスして確認することはできません。
+また、Azure Portalにアクセスできる場合は、Azure Filesの作成に利用しているストレージ アカウントを選択して、左サイドメニューの「ファイル共有」から、現在のAzure Filesの利用状況を確認できます。PVC1つにつき、Azureの「ファイル共有」リソースが1つ、自動作成されていきます。この演習では、受講者はAzure Portalへのアクセス権限を持たないことを想定しますので、実際にアクセスして確認することはできません。
 
 ![ファイル共有利用状況の確認](./images/azure-portal-files.png)
 <div style="text-align: center;">Azure Portalでのファイル共有利用状況の確認</div>　
@@ -215,6 +215,7 @@ Podのターミナルからマウント状況を確認すると、CIFSプロト�
 
 ここで作成したPodとは別のPodを新しく作成して、複数のPodから同じPVCを利用することで、1つのファイルシステムを共有できることを確認します。前述のPod作成に利用したYAMLファイルで、「name: test-azure-files1」を「name: test-azure-files2」などに変更することで、変更したPod名で新規Podを実行してみます。「test-azure-files2」Podでもマウント先のディレクトリへのファイル作成/削除や、「test-azure-files1」Podで作成したファイルの修正ができることを、当該Podの「ターミナル」タブから確認してみてください。
 
+なお、不要なPodの削除などによって、PVCが不要になった場合は、AROのWebコンソールで当該PVCを選択したあとに、「アクション」→「永続ボリューム要求の削除」から削除できます。PVCのバックエンドとしてAzure Filesを使っている場合は、前述したAzure Portalでの「ファイル共有」リソースも同時に削除されます。
 
 これでAROクラスターでの、永続ボリュームとしてのAzure Disk/Filesを利用する設定と確認が完了しました。次の演習の[Azure Service Operator による Azure リソースの利用](../aro-azure-resource)に進んでください。
 
