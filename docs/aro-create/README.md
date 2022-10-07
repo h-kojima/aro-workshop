@@ -7,7 +7,7 @@ AROクラスターを作成するためには、次の条件が必要です。
 - Azure アカウント
 - サービスプリンシパルを作成するために必要となる[Azure AD ロール](https://learn.microsoft.com/ja-jp/azure/role-based-access-control/rbac-and-directory-admin-roles#differences-between-azure-roles-and-azure-ad-roles)
   - Azureでのサービスプリンシパルは、Azureユーザが開発したWebアプリケーション経由で、マイクロソフトのクラウドサービスにAPIアクセスする際にAzure ADのSSOを利用したい、といったときに利用します。AROの場合だと、AROクラスターと後述するAzure Filesとの連携にも、バックエンドで利用されています。
-  - [Azure ADの組み込みロール](https://learn.microsoft.com/ja-jp/azure/active-directory/roles/permissions-reference)を利用する場合、「アプリケーション管理者」「アプリケーション開発者」「クラウドアプリケーション管理者」のいずれかのロールが必要
+  - [Azure ADの組み込みロール](https://learn.microsoft.com/ja-jp/azure/active-directory/roles/permissions-reference)を利用する場合、「アプリケーション管理者」「アプリケーション開発者」「クラウドアプリケーション管理者」のいずれかの組み込みロールが必要
 - Azure CLIを利用する場合、バージョン2.6.0以降
 - Azureリソースクォータの制限値の引き上げ
   - トータルで40コア(CPU)以上の仮想マシン作成可能にしておくこと
