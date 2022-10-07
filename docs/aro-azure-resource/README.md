@@ -22,14 +22,14 @@ $ az account show
 }
 ```
 
-次に、Azureのサービスプリンシパルを作成して、事前に用意しておいたAzureのリソースグループに対する「ネットワーク共同作成者(network contributor)」の権限を割り当てます。これにより、指定したリソースグループに対して、このサービスプリンシパルを利用したAzure Virtual Networkリソースが作成できるようになります。ここではサービスプリンシパルの名前に「hkojima-azure-service-operator」、リソースグループ名として「aro-handson-rg」を指定しています。「XXXXXXXXXXXXX」となっているところはAzureサブスクリプションIDであり、前述にメモしておいた「id」の値となります。
+次に、Azureのサービスプリンシパルを作成して、事前に用意しておいたAzureのリソースグループに対する「ネットワーク共同作成者(network contributor)」の権限を割り当てます。これにより、指定したリソースグループに対して、このサービスプリンシパルを利用したAzure Virtual Networkリソースが作成できるようになります。ここでは任意の名前のサービスプリンシパルを指定し、リソースグループ名として「aro-handson-rg」を指定しています。「XXXXXXXXXXXXX」となっているところはAzureサブスクリプションIDであり、前述にメモしておいた「id」の値となります。
 ```
-$ az ad sp create-for-rbac -n "hkojima-azure-service-operator" --role "network contributor" --scopes /subscriptions/XXXXXXXXXXXXX/resourceGroups/aro-handson-rg
+$ az ad sp create-for-rbac -n <任意の名前のサービスプリンシパル> --role "network contributor" --scopes /subscriptions/XXXXXXXXXXXXX/resourceGroups/aro-handson-rg
 Creating 'network contributor' role assignment under scope '/subscriptions/XXXXXXXXXXXXX/resourceGroups/aro-handson-rg'
 The output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. For more information, see https://aka.ms/azadsp-cli
 {
   "appId": "XXXXXXXXXXXXX",
-  "displayName": "hkojima-azure-service-operator",
+  "displayName": <任意の名前のサービスプリンシパル>,
   "password": "XXXXXXXXXXXXX",
   "tenant": "XXXXXXXXXXXXX"
 }
