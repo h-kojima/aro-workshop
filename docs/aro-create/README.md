@@ -2,11 +2,21 @@
 
 ### 前準備
 
+AROクラスターを作成するためには、次の条件が必要です。
+
+- Azure アカウント
+- サービスプリンシパルを作成するために必要となる[Azure AD ロール](https://learn.microsoft.com/ja-jp/azure/role-based-access-control/rbac-and-directory-admin-roles#differences-between-azure-roles-and-azure-ad-roles)
+  - Azureでのサービスプリンシパルは、Azureユーザが開発したWebアプリケーション経由で、マイクロソフトのクラウドサービスにAPIアクセスする際にAzure ADのSSOを利用したい、といったときに利用します。AROの場合だと、AROクラスターと後述するAzure Filesとの連携にも、バックエンドで利用されています。
+  - [Azureの組み込みロール](https://learn.microsoft.com/ja-jp/azure/active-directory/roles/permissions-reference)を利用する場合、「アプリケーション管理者」「アプリケーション開発者」「クラウドアプリケーション管理者」のいずれかのロールが必要
+- Azure CLIを利用する場合、バージョン2.6.0以降
+- Azureリソースクォータの制限値の引き上げ
+  - トータルで40コア(CPU)以上の仮想マシン作成可能にしておくこと
+
 AROクラスターには、少なくともトータルで40コア以上の仮想マシンを作成する必要があります。Azureリソースクォータがこの要件を満たさない場合、リソースの制限値の引き上げが必要となります。詳細は下記をご参照ください。
 
 **[参考情報]** [「チュートリアル: Azure Red Hat OpenShift 4 クラスターを作成する」の「開始する前に」](https://learn.microsoft.com/ja-jp/azure/openshift/tutorial-create-cluster#before-you-begin) を参照
 
-Azure PortalかAzure CLI(バージョン 2.6.0 以降)を利用して、AROクラスターをデプロイできます。Azure Portalを利用する場合は、Azure Portalにサインインして、AROを利用するための[サービスプリンシパル](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/howto-create-service-principal-portal)(各ユーザーに設定するRBACのように、各サービスに設定可能なRBAC. Azure特有用語)を作成する必要があります。「Azure PortalからAROを作成する」というサービスが、「AROクラスターについての読み書き(作成/削除)を可能にする」権限を、サービスプリンシパルによって設定します。
+Azure PortalかAzure CLIを利用して、AROクラスターをデプロイできます。Azure Portalを利用する場合は、Azure Portalにサインインして、AROを利用するための[サービスプリンシパル](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/howto-create-service-principal-portal)を作成する必要があります。
 
 サービスプリンシパルは、Azure Active Directoryのメニューから作成できます。[Azure Portal](https://portal.azure.com)にログインして、「Azure Active Directory」メニューを選択し、「アプリの登録」をクリックします。その後、アプリケーションの登録画面で、任意のアプリケーション名(この例では、aro4)を入力して、残りのパラメータはデフォルトのまま「登録」をクリックします。
 
@@ -85,7 +95,9 @@ AROを作成/削除するための権限となる、カスタムロールを作�
 
 ### AROクラスターの作成
 
-ここまでの手順で、AROクラスターを作成/削除するためのサービスプリンシパルの準備が完了しました。これを利用して、AROクラスターを作成します。Azure Portalのホーム画面にある検索ボックスから「azure red hat openshift」を検索・選択します。「azure red hat openshift の作成」をクリックして、サブスクリプション、前述の手順で作成したリソースグループ、リージョンを選択します。「OpenShift cluster name」と「Domain Name」は任意の名前を入力します。「Worker VM size」と「Worker node count」は、AROクラスターの規模に応じて選択します。この例ではデフォルトの値を利用しています。
+ここまでの手順で、AROクラスターを作成/削除するためのサービスプリンシパルの準備が完了しました。これを利用して、AROクラスターを作成します。Azure Portalのホーム画面にある検索ボックスから「azure red hat openshift」を検索・選択します。
+
+「azure red hat openshift の作成」をクリックして、サブスクリプション、前述の手順で作成したリソースグループ、リージョンを選択します。「OpenShift cluster name」と「Domain Name」は任意の名前を入力します。「Worker VM size」と「Worker node count」は、AROクラスターの規模に応じて選択します。この例ではデフォルトの値を利用しています。
 
 
 ![AROクラスター作成 その1](./images/aro-create1.png)
@@ -139,10 +151,27 @@ $ az aro list-credentials --name testmyaro01 --resource-group aro-handson-rg01
 なお、AROクラスターの作成完了を待っている間、予め作成済みである別のAROクラスターを利用して、受講者は演習を進めます。[アプリケーションのデプロイのクイックスタート](../aro-app-deploy-quickstart)に進んでください。
 
 
-#### \[参考情報\]
+### [Azure CLIを利用したAROクラスターの作成]
+
+Azure CLI(azコマンド)を利用して、AROクラスターを作成することもできます。必要となる主な手順は、次のとおりです。
+
+- ARO用のリソースグループの作成
+- ARO用の仮想ネットワークの作成
+  - コントローラノードとコンピュートノード用の2つのサブネットを持つ仮想ネットワークの作成
+- AROクラスターの作成
+
+注意点としては、Azure Portalで指定したサービスプリンシパルは、オプションのパラメータとなり、必須ではありません。AROクラスターの作成コマンド「az aro create」を実行するときに、サービスプリンシパルをパラメータとして指定しなかった場合は、自動的にAROクラスター用のサービスプリンシパルが作成されます。
+
+そのため、サービスプリンシパル作成権限を持つ、Azure AD ロールがAzureユーザに割り当てられていなかった場合、AROクラスターの作成に失敗するので、注意してください。
+
+手順の概要については、下記をご参照ください。
+
+[**Azure Red Hat OpenShiftクラスターを作成(Azure CLIを利用)してWebコンソールからアプリをデプロイ**](https://qiita.com/hatasaki/items/8a8526a3dd753e22b503)
+
+
+#### [参考情報] 
 
 - [Azure portal を使用した Azure Red Hat OpenShift クラスターのデプロイ](https://docs.microsoft.com/ja-jp/azure/openshift/quickstart-portal)
-- [Azure Red Hat OpenShiftクラスターを作成(Azure CLIを利用)してWebコンソールからアプリをデプロイ](https://qiita.com/hatasaki/items/8a8526a3dd753e22b503)
 
 
 [HOME](../../README.md)
