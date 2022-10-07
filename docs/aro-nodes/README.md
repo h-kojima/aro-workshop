@@ -25,6 +25,8 @@ AROに含まれるOpenShiftのコンピュートノードは、マシンセッ�
 
 最初にAdministratorパースペクティブの左サイドメニューからマシンセットを選択して、「マシンセットの作成」ボタンをクリックします。すると、YAMLファイルを入力する画面が表示されますので、下記のようなマシンセットを定義したYAMLファイルを入力し、「作成」をクリックしてマシンセットを作成します。新規マシンセットの作成に伴い、自動的にコンピュートノードが1台(replicas: 1の指定によるもの)追加されます。
 
+※ [セルフマネージド版のOpenShift on Azureで利用するマシンセット](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.10/html/machine_management/machineset-yaml-azure_creating-machineset-azure)とは、若干異なるものとなります。具体的には、マシンセットに利用するイメージのSKUなどが異なります。
+
 ```
 apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
