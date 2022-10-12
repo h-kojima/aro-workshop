@@ -6,6 +6,8 @@
 
 AROに含まれるRed Hat OpenShiftのOperatorHubでは、Kubernetes/OpenShiftからAzureのリソースを簡単に作成/削除できるようになっている[Azure Service Operator](https://github.com/Azure/azure-service-operator)というOperatorを用意しています。この演習では、Azure Service Operatorを利用して、Azureのリソースの1つである[Azure Virtual Network](https://azure.microsoft.com/ja-jp/pricing/details/virtual-network/)を利用するための設定を行います。
 
+**[Tips]** Operatorは、Kubernetes/OpenShift上で実行されるコンテナアプリの運用(自動構築や削除など)を自動化するための、専用コンテナとなります。Operatorは、対象となるコンテナアプリを運用するためのインタフェースを提供します。このインタフェースの利用例については、後述する「[ハンズオン] Azure Service Operatorを利用したAzure Virtual Networkの作成」でご紹介します。なお、Operator自身も通常のアプリケーションと同様に、Podとして実行されます。
+
 最初に、Azure CLIを利用してAzureにログインした後に、アカウントの情報を確認します。ここで確認できる「id」の値をメモしておきます。
 ```
 $ az login
