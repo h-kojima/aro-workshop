@@ -114,7 +114,7 @@ AROクラスターで、マイナーリリース間のアップグレードが�
 
 **[Tips]** AROの正式リリースとして提供開始される前に、ARO利用者がstableチャネルで利用可能な最新リリースにアップグレードすることは可能であり、かつ、サポート対象となります。ここで挙げてきた例のように、ARO v4.11がリリースされる前に、利用者が「stable-4.11」チャネルを設定して、ARO v4.10からARO v4.11にアップグレードできるため、本番環境のアップグレードの先行テストなどに利用できます。
 
-**参考情報** [Red Hat OpenShift Container Platform version support policy (AROの公式ドキュメント)](https://learn.microsoft.com/en-us/azure/openshift/support-lifecycle#red-hat-openshift-container-platform-version-support-policy)
+[Red Hat OpenShift Container Platform version support policy (AROの公式ドキュメント)](https://learn.microsoft.com/en-us/azure/openshift/support-lifecycle#red-hat-openshift-container-platform-version-support-policy)
 
 
 これで、AROクラスターアップグレードのデモ紹介は終了です。次は、インストラクターによる、[AROクラスター削除](../aro-delete)のデモ紹介です。
