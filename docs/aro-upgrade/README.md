@@ -6,6 +6,8 @@ OpenShiftクラスターのrootユーザーである[kubeadminユーザー](http
 
 AROクラスターのデフォルトだと、更新チャネルが未設定の状態なので、チャネルを設定します。未設定の横の鉛筆マークをクリックして、チャネル名(この例では、stable-4.10)を入力して、「保存」をクリックします。
 
+**[Tips]** AROでは、[「stable」チャネルのみがサポート対象のチャネル](https://learn.microsoft.com/en-us/azure/openshift/support-lifecycle#upgrade-channels)となります。
+
 ![更新チャネルの設定](./images/channel-config1.png)
 ![更新チャネルの設定](./images/channel-config2.png)
 ![更新チャネルの設定](./images/channel-config3.png)
