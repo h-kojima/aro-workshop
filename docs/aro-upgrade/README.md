@@ -2,7 +2,7 @@
 
 ### 前準備
 
-AROクラスターは、セルフマネージド版のOpenShiftと同じ手順でアップグレードが可能です。
+AROクラスターは、セルフマネージド版のOpenShiftと同様に、[Webコンソール](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/updating_clusters/update-upgrading-web_updating-cluster-within-minor)や[CLI](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/updating_clusters/update-upgrading-cli_updating-cluster-cli)(「oc adm upgrade」コマンド)を使用したアップグレードが可能です。ここでは、OpenShiftのWebコンソールを利用した、AROクラスターのアップグレード方法をご紹介します。
 
 OpenShiftクラスターのrootユーザーである[kubeadminユーザー](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/post-installation_configuration/understanding-kubeadmin_post-install-preparing-for-users)、または、クラスター管理権限となる[cluster-adminロール](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/post-installation_configuration/post-install-using-rbac-to-define-and-apply-permissions#default-roles_post-install-preparing-for-users)が割り当てられたユーザーで、AROクラスターにログインして、「管理」の「クラスター設定」画面に移動します。
 
