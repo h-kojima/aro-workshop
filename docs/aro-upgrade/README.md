@@ -2,7 +2,9 @@
 
 ### 前準備
 
-OpenShiftクラスターのrootユーザーである[kubeadminユーザー](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/post-installation_configuration/understanding-kubeadmin_post-install-preparing-for-users)、または、クラスター管理権限となる[cluster-adminロール](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/post-installation_configuration/post-install-using-rbac-to-define-and-apply-permissions#default-roles_post-install-preparing-for-users)が割り当てられたユーザーで、AROクラスターにログインして、「管理」の「クラスター設定」画面に移動します。AROクラスターのデフォルトだと、更新チャネルが未設定の状態なので、チャネルを設定します。未設定の横の鉛筆マークをクリックして、チャネル名(この例では、stable-4.10)を入力して、「保存」をクリックします。
+OpenShiftクラスターのrootユーザーである[kubeadminユーザー](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/post-installation_configuration/understanding-kubeadmin_post-install-preparing-for-users)、または、クラスター管理権限となる[cluster-adminロール](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/post-installation_configuration/post-install-using-rbac-to-define-and-apply-permissions#default-roles_post-install-preparing-for-users)が割り当てられたユーザーで、AROクラスターにログインして、「管理」の「クラスター設定」画面に移動します。
+
+AROクラスターのデフォルトだと、更新チャネルが未設定の状態なので、チャネルを設定します。未設定の横の鉛筆マークをクリックして、チャネル名(この例では、stable-4.10)を入力して、「保存」をクリックします。
 
 ![更新チャネルの設定](./images/channel-config1.png)
 ![更新チャネルの設定](./images/channel-config2.png)
