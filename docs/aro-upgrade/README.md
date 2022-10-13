@@ -2,6 +2,8 @@
 
 ### 前準備
 
+AROクラスターは、セルフマネージド版のOpenShiftと同じ手順でアップグレードが可能です。
+
 OpenShiftクラスターのrootユーザーである[kubeadminユーザー](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/post-installation_configuration/understanding-kubeadmin_post-install-preparing-for-users)、または、クラスター管理権限となる[cluster-adminロール](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.11/html/post-installation_configuration/post-install-using-rbac-to-define-and-apply-permissions#default-roles_post-install-preparing-for-users)が割り当てられたユーザーで、AROクラスターにログインして、「管理」の「クラスター設定」画面に移動します。
 
 AROクラスターのデフォルトだと、更新チャネルが未設定の状態なので、チャネルを設定します。未設定の横の鉛筆マークをクリックして、チャネル名(この例では、stable-4.10)を入力して、「保存」をクリックします。
@@ -66,7 +68,7 @@ workerpool-canary   rendered-workerpool-canary-e3b5c7f3534a74ba469358659178d170 
 
 ### AROクラスターのアップグレード
 
-「クラスター設定」画面から「Select a version」をクリックして、アップグレードするバージョンを選択します。このとき、「Full cluster update」を選択すると、全てのコントローラ/コンピュートノードがアップグレードされます。「Partial cluster update」を選択すると、一部または全てのコンピュートノードをアップグレードから除外できます。ここでは、前述したMCP「workerpool-canary」に含まれるコンピュートノードを選択しています。そして「更新」をクリックして、AROクラスターのアップグレードを開始します。
+「クラスター設定」画面から「Select a version」をクリックして、アップグレードするバージョン(リリース)を選択します。このとき、「Full cluster update」を選択すると、全てのコントローラ/コンピュートノードがアップグレードされます。「Partial cluster update」を選択すると、一部または全てのコンピュートノードをアップグレードから除外できます。ここでは、前述したMCP「workerpool-canary」に含まれるコンピュートノードを選択しています。そして「更新」をクリックして、AROクラスターのアップグレードを開始します。
 
 
 ![AROクラスターのアップグレード](./images/channel-config3.png)
@@ -91,10 +93,34 @@ workerpool-canary   rendered-workerpool-canary-e3b5c7f3534a74ba469358659178d170 
 <div style="text-align: center;">AROクラスターのアップグレード状況 その2</div>　
 
 
+### AROクラスターのマイナーリリース間のアップグレード
+
+AROクラスターは、4.10から4.11など、マイナーリリース間のアップグレードも可能です。AROクラスターの更新情報と更新イメージを配布するサービスは、Red Hatによって管理されています。そのため、セルフマネージド版OpenShiftのマイナーリリース間のアップグレードパスがRed Hatによって提供開始されたタイミングで、AROクラスターでも当該アップグレードパスを利用できるようになります。
+
+AROクラスターで、マイナーリリース間のアップグレードが可能になった場合、次のような画像で、アップグレード対象のstableチャネルが利用可能であることが分かるようになっています。
+
+![「stable-4.11」チャネルが利用可能になった例](./images/aro-minor-upgrade-path.png)
+<div style="text-align: center;">「stable-4.11」チャネルが利用可能になった例</div>　
+
+このとき、前述の手順と同様の手順で、更新チャネルを「stable-4.10」から「stable-4.11」に変更すると、4.11へのアップグレードを選択・実施できるようになります。
+
+![「stable-4.11」チャネルを設定](./images/aro-stable-411.png)
+<div style="text-align: center;">「stable-4.11」チャネルを設定</div>　
+
+上記画面にある「+ その他」をクリックすることで、現在更新可能なリリースの一覧を確認できます。「stable-4.11」チャネルを設定しても、4.11系だけでなく4.10系にもアップグレードが可能です。
+
+![更新可能なリリースの一覧](./images/aro-upgrade-list.png)
+<div style="text-align: center;">更新可能なリリースの一覧</div>　
+
+**[Tips]** AROの正式リリースとして提供開始される前に、ARO利用者がstableチャネルで利用可能な最新リリースにアップグレードすることは可能であり、かつ、サポート対象となります。ここで挙げてきた例のように、ARO v4.11がリリースされる前に、利用者が「stable-4.11」チャネルを設定して、ARO v4.10からARO v4.11にアップグレードできるため、本番環境のアップグレードの先行テストなどに利用できます。
+
+**参考情報** [Red Hat OpenShift Container Platform version support policy (AROの公式ドキュメント)](https://learn.microsoft.com/en-us/azure/openshift/support-lifecycle#red-hat-openshift-container-platform-version-support-policy)
+
+
 これで、AROクラスターアップグレードのデモ紹介は終了です。次は、インストラクターによる、[AROクラスター削除](../aro-delete)のデモ紹介です。
 
 
-#### \[参考情報\]
+#### [参考情報]
 
 - [第7章 カナリアロールアウト更新の実行](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.10/html/updating_clusters/update-using-custom-machine-config-pools)
 
