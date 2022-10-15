@@ -171,9 +171,6 @@ Alertmanagerの「YAML」タブをクリックして、末尾を以下のよう�
 <div style="text-align: center;">Gmailに届いた解決済みアラートメールの例</div>　
 
 
-ちなみに、こうしたシステムの状態変更などに伴い、アラート発生後に一定時間同じアラートが発生しなかった場合には、アラートが自動的に「解決済み」の状態になって消去されます。この「一定時間」については、Alertmanagerでは「[resolve_timeout](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file)」で設定されており、AROクラスターではデフォルト値の「5分」を利用しています。
-
-
 利用者が追加したレシーバーは、不要になれば削除できます。作成したレシーバー名の右横にある「・」が縦に3つ並んだアイコンをクリックして、「レシーバーの削除」から削除できます。
 
 ![レシーバーの削除](./images/receiver-delete.png)
