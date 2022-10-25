@@ -47,7 +47,7 @@ The output includes credentials that you must protect. Be sure that you do not i
 
 - `name`: 作成するシークレットの名前。Azure Service Operatorは「azureoperatorsettings」という名前のシークレットを利用するようになっているので、この名前を指定
 - `namespace`: シークレットを作成場所となるプロジェクト名。Azure Service Operatorがインストールされる「openshift-operators」を指定
-- `AZURE_TENANT_ID`: AzureのテナントID。メモしておいた「tenant」の値を指定
+- `AZURE_TENANT_ID`: [Azure Active DirectoryのテナントID](https://learn.microsoft.com/ja-jp/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)。メモしておいた「tenant」の値を指定
 - `AZURE_SUBSCRIPTION_ID`: AzureのサブスクリプションID。メモしておいた「id」の値を指定
 - `AZURE_CLIENT_ID`: AzureのサービスプリンシパルID。メモしておいた「appId」の値を指定
 - `AZURE_CLIENT_SECRET`: 上記サービスプリンシパルのシークレット。メモしておいた「password」の値を指定
