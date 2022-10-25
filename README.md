@@ -13,6 +13,7 @@ Azure Red Hat OpenShift (ARO) Workshops プロジェクトは、インストラ�
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/4UZKbwpJGew" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
 次に下記のデモ紹介及び演習を実施します。コンテンツは以下の種類に分かれます。
 
 - \[デモ\]: インストラクターによるデモ紹介です。受講者は、コマンド実行やGUIの操作をする必要はありません。
