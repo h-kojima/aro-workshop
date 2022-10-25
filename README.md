@@ -11,8 +11,7 @@ Azure Red Hat OpenShift (ARO) Workshops プロジェクトは、インストラ�
 
 下記は、この資料の説明動画です。機械音声に読み上げさせているトークスクリプトは、[こちら](docs/pdf/talkscripts.zip)からダウンロードできます。
 
-<iframe width="640" height="360" src="https://www.youtube.com/embed/D7w88YSj0xo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<iframe width="640" height="360" src="https://www.youtube.com/embed/4UZKbwpJGew" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 次に下記のデモ紹介及び演習を実施します。コンテンツは以下の種類に分かれます。
 
