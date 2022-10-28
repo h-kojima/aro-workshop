@@ -20,10 +20,11 @@ AROでは国ごとに、色々なリージョンが利用できるようにな�
 プライベートエンドポイントや仮想ネットワークのピアリングを利用した、
 プライベート化も可能です。
 
-OpenShiftのOperator Hubにある、マイクロソフト提供のAzure Service Operatorにより、
+Azureサービスとの連携としては、標準のストレージ機能としてAzure DiskとFilesを、
+ロギングやモニタリングといった監視機能として、Azure Container Insightsを利用できます。
 
-各種Azureサービスのデプロイができます。
-
+また、マイクロソフト提供のAzure Service Operatorにより、
+その他Azureサービスのデプロイができます。
 
 少しご注意いただきたい点として、AROに組み込まれた
 OpenShiftのアップグレード作業は、基本的にお客様が実施することになります。
