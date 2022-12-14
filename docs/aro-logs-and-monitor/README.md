@@ -197,7 +197,7 @@ AROクラスターの利用者がコンピュートノードを追加/削除し�
 
 - `アプリケーションログ`: 利用者が作成したプロジェクトにデプロイされるアプリケーションのログ(stdoutとstderrに出力されるログ)を収集します。後述のインフラストラクチャー関連のログは除きます。
 - `インフラストラクチャーログ`: AROクラスター作成時にデフォルトで作成される`openshift-*`,`kube-*`などのプロジェクトにある、インフラストラクチャー関連のログを収集します。
-- `セキュリティ監査ログ`: ノード監査システム(auditd)で生成されるログ(/var/log/audit/audit.log)、Kubernetes apiserver、OpenShift apiserverの監査ログを収集します。通常、AROクラスターの監査ログは、MicroSoftとRed HatのSREチームによって管理され、[問題調査の際に、AROの利用者のサポートケースを使用したリクエストに伴って提供](https://learn.microsoft.com/ja-jp/azure/openshift/responsibility-matrix#change-management)されます。そのため、AROの利用者はこれらのログを保存する必要は必ずしもありませんが、Lokiを利用することで、利用者も随時確認できるようになります。
+- `セキュリティ監査ログ`: ノード監査システム(auditd)で生成されるログ(/var/log/audit/audit.log)、Kubernetes apiserver、OpenShift apiserverの監査ログを収集します。通常、AROクラスターの監査ログは、MicroSoftとRed HatのSREチームによって管理され、[問題調査の際に、AROの利用者のサポートケースを使用したリクエストに伴って提供](https://learn.microsoft.com/ja-jp/azure/openshift/responsibility-matrix#change-management)されます。そのため、AROの利用者は監査ログを保存する必要は必ずしもありませんが、Lokiを利用することで、利用者も随時確認できるようになります。
 
 ![AROクラスター上のアプリケーションのログ確認](./images/loki-app-logs.png)
 <div style="text-align: center;">AROクラスター上のアプリケーションのログ確認</div>　　
