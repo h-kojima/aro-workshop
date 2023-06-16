@@ -28,7 +28,6 @@ Azure Red Hat OpenShift (ARO) Workshops プロジェクトは、インストラ�
 [オプションの演習](docs/aro-sample-app-develop)を進める際に必要な要件(オプションの演習をしない場合は不要)
 - RHELサーバにSSHログインして、コマンドが実行可能
    - OpenShift CLI(ocコマンド)がインストールされているRHELサーバを利用するために、SSHログインが必要です。
-- GitHubの個人アカウント
 
 補足事項: 次のものを用意することで、下記コンテンツの自習も可能です。
 
