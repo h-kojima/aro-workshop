@@ -12,7 +12,7 @@ AROクラスターを作成するためには、次の条件が必要です。
 - Azureリソースクォータの制限値の引き上げ
   - トータルで40コア(CPU)以上の仮想マシン作成可能にしておくこと
 
-※ [送信トラフィックの制御](https://learn.microsoft.com/ja-jp/azure/openshift/howto-restrict-egress)はプレビュー扱いです。
+※ [送信トラフィックの制御](https://learn.microsoft.com/ja-jp/azure/openshift/howto-restrict-egress)も可能です。
 
 AROクラスターには、少なくともトータルで40コア以上の仮想マシンを作成する必要があります。Azureリソースクォータがこの要件を満たさない場合、リソースの制限値の引き上げが必要となります。詳細は下記をご参照ください。
 
