@@ -68,8 +68,8 @@ spec:
             offer: aro4
             publisher: azureopenshift
             resourceID: ""
-            sku: aro_410
-            version: 410.84.20220125
+            sku: <AROのバージョンID>
+            version: <AROのバージョン番号が付いたイメージID>
           apiVersion: machine.openshift.io/v1beta1
           credentialsSecret:
             name: azure-cloud-credentials
@@ -98,6 +98,8 @@ spec:
 - `AROクラスターのインフラID`: AROクラスターに付けられたID。下記画像の例では、「myopendomain01」を指定
 - `Virutal Network名`: AROクラスターが利用するVirtual Network名。下記画像の例では、「myopenaro-vnet01」を指定
 - `サブネット名`: コンピュートノードが利用するサブネット名。下記画像の例では、「worker」を指定
+- `AROのバージョンID`: AROのバージョンのID。下記画像の例では、ARO 4.10を利用しているので、「aro_410」を指定
+- `AROのバージョン番号が付いたイメージID`: イメージID。下記画像の例では、「410.84.20220125」を指定
 
 
 これらの変数を設定した、[マシンセットのサンプルファイル](./aro-machineset-japaneast3.yaml)がありますので参考にしてください。なお、「vmSize: Standard_F4s_v2」で[AROで利用可能な最小サイズのコンピュートノード](https://docs.microsoft.com/ja-jp/azure/openshift/support-policies-v4#supported-virtual-machine-sizes)を指定し、「zone: "3"」で3番目のアベイラビリティーゾーンを指定しています。
