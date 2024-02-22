@@ -1,3 +1,0 @@
-The talk scripts of this page are as follows:
-
-マイクロソフトが提供する、OpenShiftのマネージドサービス、AROの概要をご紹介します。

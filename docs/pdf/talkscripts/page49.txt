@@ -1,5 +1,0 @@
-The talk scripts of this page are as follows:
-
-それではここからはAzure Red Hat OpenShiftの特徴をご紹介します。
-こちらに並ぶ項目が、今回ご紹介したいAzure Red Hat OpenShiftの主な特徴になります。
-それぞれについて、次のスライドから簡単にご説明していきます。

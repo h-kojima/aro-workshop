@@ -1,9 +1,0 @@
-The talk scripts of this page are as follows:
-
-以上で、コンテナ、Kubernetes、OpenShift、そして、
-OpenShiftマネージドサービスの1つであるAROの概要のご紹介を終わります。
-
-AROは、すぐに使えるマイクロソフトのクラウドサービスの1つですので、
-ぜひとも試してみてください。
-
-ご清聴ありがとうございました。

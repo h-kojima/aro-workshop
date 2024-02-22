@@ -1,9 +1,0 @@
-The talk scripts of this page are as follows:
-
-これに対して、Azure Red Hat OpenShift では、クラスターの操作を容易化します。
-
-Microsoft と Red Hat が、すべてのOpenShiftのインフラを管理して、
-セキュリティのベスト プラクティスを適用し、VM の監視および運用を実施します。
-
-お客様はアプリケーションの構築、デプロイ、およびスケーリングに注力して、
-効率的にビジネスサービスの開発を進めることが可能です。
